@@ -1,6 +1,20 @@
-.padding-wrapper {
-    padding:0 25px;
-    @media (max-width: 576px) {
-        padding: 0 12px;
-    }
+%container {
+	max-width: 1440px !important;
+	width: 90% !important;
+}
+
+// .padding-wrapper {
+// 	padding: 0 25px;
+// 	@media (max-width: 576px) {
+// 		padding: 0 12px;
+// 	}
+// }
+
+/* Convert pixels to rem */
+@function rem($pixels, $base: 16) {
+	@return ($pixels/$base) * 1rem;
+}
+/* Convert pixels to em */
+@function em($pixels, $base: 16) {
+	@return ($pixels/$base) * 1em;
 }
