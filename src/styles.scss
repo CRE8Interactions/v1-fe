@@ -17,8 +17,9 @@ body {
 	box-shadow: none !important;
 }
 
-.max-width-wrapper {
-	@extend %container;
+.max-width-wrapper,
+.copyright-wrapper {
+	@include container;
 }
 
 .container-fluid {

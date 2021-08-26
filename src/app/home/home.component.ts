@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 			prevEl: '.swiper-button-prev1'
 		},
 		preloadImages: true,
-		spaceBetween: 35
+		spaceBetween: 40
 		// Responsive breakpoints
 		// breakpoints: {
 		//   // when window width is >= 320px
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
 			prevEl: '.swiper-button-prev2'
 		},
 		preloadImages: true,
-		spaceBetween: 57,
+		spaceBetween: 40,
 		// Responsive breakpoints
 		breakpoints: {
 			// when window width is >= 320px

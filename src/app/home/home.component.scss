@@ -49,12 +49,11 @@
 			}
 		}
 	}
-	.swiper-wrapper {
-		margin-top: 20px;
-	}
+	// .swiper-wrapper {
+	// 	margin-top: 20px;
+	// }
 	.swiper-container {
 		height: 375px;
-		margin-top: -20px;
 
 		@media (max-width: 500px) {
 			width: 98%;
@@ -319,18 +318,11 @@
 	}
 	.watch-now {
 		margin-top: 125px;
-		margin-bottom: 15px;
-
-		.section-heading {
-			margin-bottom: 0px;
-		}
+		margin-bottom: em(14);
 	}
-	.just-announced {
-		margin-bottom: 15px;
 
-		h4 {
-			margin-bottom: 0px;
-		}
+	.just-announced {
+		margin-bottom: em(14);
 	}
 }
 
