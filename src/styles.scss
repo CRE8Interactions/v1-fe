@@ -21,6 +21,10 @@ img {
 	object-fit: cover;
 }
 
+strong {
+	color: #ffdc4e;
+}
+
 .max-width-wrapper,
 .copyright-wrapper {
 	@include container;

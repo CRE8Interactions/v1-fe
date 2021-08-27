@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light sticky-top navbar-expand-lg" id="nav" *ngIf="showNav">
 	<div class="container px-0 max-width-wrapper mx-auto">
 		<a class="navbar-brand" routerLink="/home">
-			<img src="./assets/salticorn.png" class="logo" width="183px" height="39px" alt="Studio on sunset Logo">
+			<img src="./assets/salticorn.png" class="logo" width="183px" height="39px" alt="Salticorn Logo">
 		</a>
 		<button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas"
 			data-bs-target="#offcanvas" aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="/account/my-shows">My Shows</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a href="#" class="nav-link">
 						<svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="27" height="27.007"
 							viewBox="0 0 27 27.007">
@@ -24,7 +24,7 @@
 								transform="translate(-4.5 -4.493)" fill="#fff" />
 						</svg>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 			<form class="d-flex align-items-center">
 				<button type="button" class="btn btn-link text-uppercase" routerLink="/login"
@@ -34,7 +34,7 @@
 				<!-- ------------------------------------------------ -->
 				<!-- if there is a user logged in  ^-->
 				<!-- begin notification wrapper -->
-				<div class="nav-item dropdown notifications-wrapper" *ngIf="user">
+				<!-- v<div class="nav-item dropdown notifications-wrapper" *ngIf="user">
 					<a class="nav-link notification-btn" href="#" id="navbarDropdown" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">
 					</a>
@@ -62,7 +62,7 @@
 						<li class="item-body"><a href="#" class="notification-link alt-color">Forever Young</a> - Im
 							Young</li>
 					</ul>
-				</div>
+				</div> -->
 				<div class="d-flex align-items-center" *ngIf="user">
 					<!-- end of notification wrapper ^ -->
 					<div class="dropdown profile-wrapper">

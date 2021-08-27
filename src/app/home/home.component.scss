@@ -9,19 +9,18 @@
 
 	.swiper-button-container {
 		width: 79px;
-		height: em(25);
+		height: 25px;
 		background-color: #20212b;
 		border-radius: 8px;
 		border: 2px solid #2e303d;
 		@media (max-width: 575px) {
 			margin-bottom: 0;
 		}
+
+		.swiper-button-left-wrapper,
 		.swiper-button-right-wrapper {
-			padding-right: 1rem;
-			margin-right: -1rem;
-		}
-		.swiper-button-left-wrapper {
 			padding-left: 1rem;
+			padding-bottom: 1px;
 			margin-left: -1rem;
 		}
 		.btn-right {
@@ -221,12 +220,17 @@
 			}
 		}
 	}
+
+	.event-details-wrapper {
+		font-size: rem(18);
+		font-weight: 600;
+	}
 	.event-name {
 		font-size: rem(34);
 		color: #fff;
 		font-weight: 800;
 		margin-bottom: 20px;
-		max-width: 800px;
+		width: 18ch;
 		font-size: clamp(2rem, 1.5728rem + 1.4987vw, 3.75rem);
 		// @media (min-width: 576px) {
 		// 	font-size: rem(42);
