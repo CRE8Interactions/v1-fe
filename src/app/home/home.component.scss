@@ -49,15 +49,15 @@
 			}
 		}
 	}
-	// .swiper-wrapper {
-	// 	margin-top: 20px;
-	// }
+	.swiper-wrapper {
+		margin-top: em(5);
+	}
 	.swiper-container {
 		height: 375px;
 
-		@media (max-width: 500px) {
-			width: 98%;
-		}
+		// @media (max-width: 500px) {
+		// 	width: 98%;
+		// }
 		.hover-wrapper {
 			transition: all 0.3s ease-in-out;
 		}
@@ -333,11 +333,19 @@
 	}
 	.watch-now {
 		margin-top: 125px;
-		margin-bottom: em(14);
+		margin-bottom: em(15);
+
+		.section-heading {
+			margin-bottom: 0px;
+		}
 	}
 
 	.just-announced {
-		margin-bottom: em(14);
+		margin-bottom: em(15);
+
+		.section-heading {
+			margin-bottom: 0px;
+		}
 	}
 }
 
