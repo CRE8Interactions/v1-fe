@@ -22,7 +22,7 @@ img {
 }
 
 strong {
-	color: #ffdc4e;
+	color: $clr-primary;
 }
 
 .max-width-wrapper,
@@ -126,36 +126,7 @@ strong {
 		}
 	}
 }
-// Extra Small devices (landscape phones, 576px and up)
-// @media (max-width: 576px) {
-// .container {
-// max-width: 91vw !important;
-// }
-// }
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
-// .container {
-// max-width: 92vw !important;
-// }
-// }
-// Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-// .container {
-// max-width: 92vw !important;
-// }
-// }
-// Large devices (desktops, 1185px and up)
-// @media (min-width: 1185px) {
-// .container {
-// max-width: 92vw !important;
-// }
-// }
-// X-Large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-// .container {
-// max-width: 92vw !important;
-// }
-// }
+
 .nav-blur {
 	backdrop-filter: blur(25px);
 	-webkit-backdrop-filter: blur(25 px);

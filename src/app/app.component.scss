@@ -1,3 +1,9 @@
+/* Sass Variables */
+
+$clr-primary: #ffdc4e;
+
+/* Sass Mixins/Functions */
+
 /* container for max-width-wrapper class */
 @mixin container {
 	max-width: 1440px !important;
