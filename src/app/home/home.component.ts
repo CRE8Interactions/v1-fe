@@ -68,19 +68,19 @@ export class HomeComponent implements OnInit {
 			prevEl: '.swiper-button-prev2'
 		},
 		preloadImages: true,
-		spaceBetween: 40,
+		spaceBetween: 40
 		// Responsive breakpoints
-		breakpoints: {
-			// when window width is >= 320px
-			320: {
-				// slidesPerView: 2,
-				// spaceBetween: 40
-			},
-			// when window width is >= 992px
-			992: {
-				// slidesPerView: 4
-			}
-		}
+		// breakpoints: {
+		// 	// when window width is >= 320px
+		// 	320: {
+		// 		// slidesPerView: 2,
+		// 		// spaceBetween: 40
+		// 	},
+		// 	// when window width is >= 992px
+		// 	992: {
+		// 		// slidesPerView: 4
+		// 	}
+		// }
 	};
 
 	constructor(
