@@ -1,6 +1,20 @@
-.padding-wrapper {
-    padding:0 25px;
-    @media (max-width: 576px) {
-        padding: 0 12px;
-    }
+/* Sass Variables */
+
+$clr-primary: #ffdc4e;
+
+/* Sass Mixins/Functions */
+
+/* container for max-width-wrapper class */
+@mixin container {
+	max-width: 1440px !important;
+	width: 90% !important;
+}
+
+/* Convert pixels to rem */
+@function rem($pixels, $base: 16) {
+	@return ($pixels/$base) * 1rem;
+}
+/* Convert pixels to em */
+@function em($pixels, $base: 16) {
+	@return ($pixels/$base) * 1em;
 }
