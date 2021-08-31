@@ -39,7 +39,7 @@ export class MyShowsComponent implements OnInit {
 			prevEl: '.swiper-button-prev1'
 		},
 		preloadImages: true,
-		spaceBetween: 40
+		spaceBetween: 30
 		// Responsive breakpoints
 		// breakpoints: {
 		//   // when window width is >= 320px
