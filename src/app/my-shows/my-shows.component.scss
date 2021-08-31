@@ -7,6 +7,20 @@
 	// 	font-weight: bold;
 	// }
 }
+
+.swiper-container {
+	height: auto;
+
+	// // swiper doesn't show all slides by default
+	// .swiper-wrapper {
+	// 	width: 100vw !important;
+
+	// adding margin to second row of slides
+	.swiper-slide {
+		margin-top: 0px !important;
+	}
+}
+// }
 // .shows-row {
 // 	margin-bottom: 20px;
 // }

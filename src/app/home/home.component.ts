@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 		},
 		preloadImages: true,
 		slidesPerView: 2,
-		spaceBetween: 40,
+		spaceBetween: 20,
 		// Responsive breakpoints
 		breakpoints: {
 			// when window width is >= 576px
@@ -52,7 +52,11 @@ export class HomeComponent implements OnInit {
 				slidesPerView: 4
 			},
 			// when window width is >= 992px
-			992: {
+			// 992: {
+			// 	slidesPerView: 5
+			// },
+			// images are too small at 992px but gap gets too big after 1000px
+			1100: {
 				slidesPerView: 5
 			},
 			// when window width is >= 1200px
@@ -72,7 +76,7 @@ export class HomeComponent implements OnInit {
 		},
 		preloadImages: true,
 		slidesPerView: 2,
-		spaceBetween: 40,
+		spaceBetween: 12,
 		// Responsive breakpoints
 		breakpoints: {
 			// when window width is >= 576px
