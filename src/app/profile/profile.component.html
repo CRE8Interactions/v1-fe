@@ -1,30 +1,30 @@
 <div class="profile mx-auto max-width-wrapper">
-    <div class="row flex-direction-wrapper justify-content-between profile-wrapper">
-        <div class="col-3 col-sm-3 col-md-2 px-0">
-            <div class="row">
-                <div class="menu text-nowrap px-0">
-                    <h1 class="heading" id="my-profile-heading">My Profile</h1>
-                    <ul class="list-group pl-0">
-                        <li id="personal-details" class="list-group-item"><a
-                                routerLink="/account/profile/personal-details"
-                                routerLinkActive="profile-link-active">Personal Details</a></li>
-                        <li id="login-security" class="list-group-item"><a routerLink="/account/profile/login-security"
-                                routerLinkActive="profile-link-active">Login & Security</a></li>
-                        <li id="invoices" class="list-group-item"><a routerLink="/account/profile/invoices"
-                                routerLinkActive="profile-link-active">Invoices</a>
-                        </li>
-                        <li id="shipping-address" class="list-group-item"><a routerLink="/account/profile/address"
-                                routerLinkActive="profile-link-active">Shipping Address</a></li>
-                        <li id="newsletter" class="list-group-item newsletter-link">
-                            <a routerLink="/account/profile/newsletter"
-                                routerLinkActive="profile-link-active">Newsletter</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-9 mx-0 ms-0 px-0 card-group--tablet-bp">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+	<div class="row flex-direction-wrapper justify-content-between profile-wrapper">
+		<div class="col-md-2">
+			<div class="d-flex">
+				<div class="menu text-nowrap px-0">
+					<h1 class="section-title heading" id="my-profile-heading">My Profile</h1>
+					<ul class="list-group pl-0">
+						<li id="personal-details" class="list-group-item"><a
+								routerLink="/account/profile/personal-details"
+								routerLinkActive="profile-link-active">Personal Details</a></li>
+						<li id="login-security" class="list-group-item"><a routerLink="/account/profile/login-security"
+								routerLinkActive="profile-link-active">Login & Security</a></li>
+						<li id="invoices" class="list-group-item"><a routerLink="/account/profile/invoices"
+								routerLinkActive="profile-link-active">Invoices</a>
+						</li>
+						<li id="shipping-address" class="list-group-item"><a routerLink="/account/profile/address"
+								routerLinkActive="profile-link-active">Shipping Address</a></li>
+						<li id="newsletter" class="list-group-item newsletter-link">
+							<a routerLink="/account/profile/newsletter"
+								routerLinkActive="profile-link-active">Newsletter</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9 mx-0 ms-0 card-group--tablet-bp">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
 </div>

@@ -1,3 +1,5 @@
+@import '../app.component.scss';
+
 .my-shows {
 	min-height: 100vh;
 	margin-top: 47px;
@@ -11,13 +13,17 @@
 .swiper-container {
 	height: auto;
 
-	// // swiper doesn't show all slides by default
-	// .swiper-wrapper {
-	// 	width: 100vw !important;
+	// swiper doesn't show all slides at small screens
+	.swiper-wrapper {
+		@media (max-width: 576px) {
+			width: 100vw !important;
+		}
 
-	// adding margin to second row of slides
-	.swiper-slide {
-		margin-top: 0px !important;
+		// adding margin to second row of slides siperjs bug in 16v
+		.swiper-slide {
+			margin-top: 0px !important;
+			margin-bottom: em(19);
+		}
 	}
 }
 // }
