@@ -1,4 +1,4 @@
-<div class="purchase-show container sc-max-width-wrapper mx-auto">
+<div class="purchase-show max-width-wrapper mx-auto">
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="artist-info">
@@ -7,23 +7,75 @@
                     <h3 class="artist-name">{{ event?.performers[0]?.name }}</h3>
                     <p class="event-title">{{ event?.name }}</p>
                     <div class="row">
-                        <div class="event-start">
+                        <!-- commented out for styling -->
+                        <!-- <div class="event-start">
                             {{ streamingDate(event) }}
+                        </div> -->
+                        <div class="event-start-wrapper">
+                            <div class="event-start">
+                                <p class="event-date">Coming to Salticorn on
+                                    <br class="d-block d-sm-none">
+                                    <span class="alt-color">05 September
+                                        2021</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <section class="share">
+                    <section class="share d-flex align-items-center">
                         <!--
                             <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#previewModal" (click)="openPreview(1)"><img src="../../images/icons/play-circle-outline.svg" alt="play"> Preview</button>
                         <button type="button" class="btn btn-share" data-bs-toggle="modal" data-bs-target="#shareModal"><img src="../images/icons/share.svg" alt="share"> Share</button>
                         -->
-                        <button type="button" class="btn btn-purchase" data-bs-toggle="modal" data-bs-target="#purchaseModal"> Purchase</button>
-                        <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#shareModal"><i class="far fa-play-circle fa-2x"></i> <span class="preview-btn-text">Preview</span></button>
+                        <button type="button" class="btn btn-purchase" data-bs-toggle="modal"
+                            data-bs-target="#purchaseModal"> Purchase</button>
+                        <button type="button" class="btn btn-preview d-flex align-items-center" data-bs-toggle="modal"
+                            data-bs-target="#shareModal"><i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+                                    <g id="Group_2581" data-name="Group 2581" transform="translate(12339 6907)">
+                                        <path id="Path_1564" data-name="Path 1564"
+                                            d="M26.091,19.568,11.774,27.875A1.842,1.842,0,0,1,9,26.307V9.693a1.841,1.841,0,0,1,2.774-1.566l14.317,8.307a1.8,1.8,0,0,1,0,3.134Z"
+                                            transform="translate(-12327 -6896.875)" fill="#fff" />
+                                        <g id="Ellipse_102" data-name="Ellipse 102" transform="translate(-12339 -6907)"
+                                            fill="none" stroke="#62646b" stroke-width="2">
+                                            <circle cx="28" cy="28" r="28" stroke="none" />
+                                            <circle cx="28" cy="28" r="27" fill="none" />
+                                        </g>
+                                    </g>
+                                </svg>
+
+                            </i> <span class="preview-btn-text">Preview</span></button>
                     </section>
                 </div>
             </div>
             <div class="show-info">
                 <h3 class="title">Show Info</h3>
-                <p class="show-details"> {{ event?.summary }} </p>
+
+                <div class="show-details"> {{ event?.summary }} <div type="button" class="show-more-btn alt-color" data-bs-toggle="modal" data-bs-target="#showMore">
+                    more
+                </div> </div>
+                
+                <!-- Button trigger modal -->
+                
+
+                <!-- SHOW MORE Modal -->
+                <div class="modal fade" id="showMore" tabindex="-1" aria-labelledby="showMoreLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content show-more-modal">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="showMoreLabel">Show info</h5>
+                                <button type="button" class="btn more-close-btn" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, at. Ab, natus harum porro voluptatum iure nihil eaque. Suscipit architecto ipsam distinctio dignissimos dolore magnam modi nemo voluptatum similique eveniet. 
+                            </div>
+                            <div class="modal-footer border-0">
+                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!--
                 <div class="get-ticket">
@@ -35,22 +87,96 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+<!-- Purchase Modal -->
+<div class="modal" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="purchaseModalLabel">Purchase</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Purchase</h5>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+            <div class="modal-body">
+                <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
+                <p class="modal-title payment-title">Payment</p>
+                <p class="body-sub-title">Please enter your card information below</p>
+                <label for="cardName" class="modal-label col-12">Name on card
+                    <input type="text" class="form-control" id="cardName">
+                </label>
+                <label for="cardNum" class="modal-label col-12">Card number
+                    <input id="ccn" class="form-control mb-0" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}"
+                        autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
+                </label>
+                <!-- <div class="row save-card-wrapper">
+                    <div class="col-12">
+                        <input class="col-6 form-check-input" type="checkbox" formControlName="store-card" id="storeCard">
+                        <label class="form-check-label" for="storeCard">
+                            <span class="col-6 checkbox-text">Store the card information for faster checkout</span>
+                        </label>
+                    </div>
+                </div> -->
+                <div class="dotted-line"></div>
+                <div class="row align-items-center justify-content-between currency col-12 mx-0">
+                    <label for="currency" class="modal-label">Currency</label>
+                    <select class="form-select " aria-label="Default" id="currency">
+                        <option selected>US dollar</option>
+                        <option value="cad">Canadian</option>
+                        <option value="gbp">GBP</option>
+                        <option value="euro">Euro</option>
+                    </select>
+                </div>
+                <div class="row promo-wrapper align-items-center">
+                    <div class="col-12">
+                        <input class="col-6 form-check-input" type="checkbox" formControlName="promo-code" id="option2" >
+                        <label class="form-check-label" for="option2">
+                            <span class="col-6 checkbox-text">Have a Promo Code?</span>
+                        </label>
+                    </div>
+                    <div class="col-12 promo-field-wrapper">
+                        <div class="input-group">
+                            <input type="text" class="form-control mt-0" placeholder="Enter here" aria-label="Enter here" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary alt-color promo-btn" type="button" id="button-addon2">Apply</button>
+                          </div>
+                    </div>
+                    
+                </div>
+                <div class="subtotals-wrapper">
+                    <div class="subtotal-row row">
+                        <span class="item-title col-6">Subtotal</span>
+                        <span class="item-cost col-6 text-end">$ 15.00</span>
+                    </div>
+                    <div class="subtotal-row row">
+                        <span class="item-title col-6">Service fee</span>
+                        <span class="item-cost col-6 text-end">$ 15.00</span>
+                    </div>
+                    <div class="dotted-line sub-line"></div>
+                    <div class="total-wrapper">
+                        <div class="subtotal-row row">
+                            <span class="item-title item-total col-6">Total</span>
+                            <div class="item-cost col-6 text-end">
+                                <p class="total-text">$ 30.00</p>
+                                <p class="total-subtext">Price including Tax</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dotted-line"></div>
+                    <div class="privacy-wrapper">
+                        <p class="body-subtitle">Data & Privacy</p>
+                        <p>We do never intend to share your personal information with third parties. Your Data is secure
+                            with us and protected via Stripe</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 modal-button-footer">
+                <button class="btn show-pay-btn" type="button">Pay With Card</button>
+                <button class="btn show-apple-btn d-flex align-items-center justify-content-center" type="button">Pay
+                    with <span><svg xmlns="http://www.w3.org/2000/svg" width="48.727" height="20"
+                            viewBox="0 0 48.727 20">
+                            <path id="apple-pay"
+                                d="M8.9,9.588a2.989,2.989,0,0,1-2.4,1.134A3.379,3.379,0,0,1,7.363,8.24,3.585,3.585,0,0,1,9.747,7.014,3.619,3.619,0,0,1,8.9,9.587m.83,1.31c-1.325-.076-2.459.754-3.083.754-.64,0-1.6-.716-2.649-.693A3.914,3.914,0,0,0,.68,12.976c-1.432,2.459-.374,6.091,1.012,8.092.678.989,1.485,2.079,2.55,2.041,1.012-.038,1.409-.655,2.627-.655s1.584.655,2.649.64c1.1-.023,1.8-.989,2.474-1.98a8.671,8.671,0,0,0,1.1-2.277,3.6,3.6,0,0,1-2.155-3.266A3.662,3.662,0,0,1,12.685,12.5,3.764,3.764,0,0,0,9.731,10.9m7.644-2.756V22.979h2.306v-5.07h3.19a4.709,4.709,0,0,0,4.956-4.9,4.654,4.654,0,0,0-4.881-4.872H17.374Zm2.306,1.941h2.657c2,0,3.144,1.065,3.144,2.938s-1.142,2.955-3.152,2.955H19.681V10.082ZM32.03,23.093a3.8,3.8,0,0,0,3.4-1.9h.046v1.781H37.6V15.594c0-2.14-1.713-3.524-4.347-3.524-2.444,0-4.255,1.4-4.324,3.32h2.079a2.026,2.026,0,0,1,2.178-1.515c1.409,0,2.2.655,2.2,1.865v.823l-2.877.175c-2.672.16-4.119,1.256-4.119,3.159s1.5,3.2,3.639,3.2Zm.624-1.758c-1.226,0-2.01-.594-2.01-1.493,0-.937.754-1.477,2.193-1.561l2.558-.16v.838A2.5,2.5,0,0,1,32.654,21.335Zm7.8,5.679c2.245,0,3.3-.861,4.225-3.457l4.041-11.343H46.379l-2.71,8.762h-.046l-2.71-8.762H38.508l3.9,10.8-.214.655a1.834,1.834,0,0,1-1.941,1.546c-.183,0-.533-.023-.678-.038v1.781a7.813,7.813,0,0,0,.882.053Z"
+                                transform="translate(0.002 -7.014)" fill="#fff" />
+                        </svg>
+                    </span></button>
+            </div>
         </div>
-        <div class="modal-body">
-            <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
-            <p class="body-title">Payment</p>
-            <p class="body-sub-title">Please confirm your payment details</p>
-        </div>
-        <div class="d-grid gap-2 modal-button-footer">
-            <button class="btn show-pay-btn" type="button">Pay With Card</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
