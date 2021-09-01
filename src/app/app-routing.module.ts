@@ -10,6 +10,7 @@ import { GenreComponent } from './genre/genre.component';
 import { GenresComponent } from './genres/genres.component';
 import { HomeComponent } from './home/home.component';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { LiveNowComponent } from './live-now/live-now.component';
 import { LoginComponent } from './login/login.component';
 import { LoginSecurityComponent } from './login-security/login-security.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
     path: 'account', component: AccountComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: 'live-now/:slug', component: LiveNowComponent },
       { path: 'my-shows', component: MyShowsComponent },
       {
         path: 'profile',

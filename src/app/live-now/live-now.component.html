@@ -1,0 +1,20 @@
+<div class="container live-now">
+  <div class="row">
+    <div class="col-md-8">
+      <iframe *ngIf="hasVimeoUrl" class="video-iframe" type="text/html" [src]="vimeoSrc" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-4">
+      <div class="chat-window position-relative">
+        <div class="chat-options position-absolute bottom-0">
+          <div class="row">
+            <div class="col-12">
+              <p class="float-start">Type Message</p>
+              <span class="float-end chat-btn"><i class="fas fa-reply"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

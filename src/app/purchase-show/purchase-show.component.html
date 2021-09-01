@@ -1,20 +1,23 @@
-<div class="purchase-show">
+<div class="purchase-show container sc-max-width-wrapper mx-auto">
     <div class="row">
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <div class="artist-info">
                 <div>
-                    <img [src]="event?.performers[0]?.flyer?.formats?.medium?.url" class="float-start">
+                    <img [src]="event?.performers[0]?.flyer?.formats?.medium?.url">
                     <h3 class="artist-name">{{ event?.performers[0]?.name }}</h3>
                     <p class="event-title">{{ event?.name }}</p>
                     <div class="row">
-                        <section class="event-date">
-                            <span class="date"><img src="../images/icons/calendar.svg"><span class="e-d-text">{{ getDate(event, event?.start) }}</span></span>
-                            <span class="duration"><img src="../images/icons/clock.svg"><span class="e-d-text"> {{ setEventDuration(event?.start, event?.end) }}</span></span>
-                        </section>
+                        <div class="event-start">
+                            {{ streamingDate(event) }}
+                        </div>
                     </div>
                     <section class="share">
-                        <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#previewModal" (click)="openPreview(1)"><img src="../../images/icons/play-circle-outline.svg" alt="play"> Preview</button>
+                        <!--
+                            <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#previewModal" (click)="openPreview(1)"><img src="../../images/icons/play-circle-outline.svg" alt="play"> Preview</button>
                         <button type="button" class="btn btn-share" data-bs-toggle="modal" data-bs-target="#shareModal"><img src="../images/icons/share.svg" alt="share"> Share</button>
+                        -->
+                        <button type="button" class="btn btn-purchase" data-bs-toggle="modal" data-bs-target="#purchaseModal"> Purchase</button>
+                        <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#shareModal"><i class="far fa-play-circle fa-2x"></i> <span class="preview-btn-text">Preview</span></button>
                     </section>
                 </div>
             </div>
@@ -22,16 +25,32 @@
                 <h3 class="title">Show Info</h3>
                 <p class="show-details"> {{ event?.summary }} </p>
             </div>
-            <div class="get-ticket">
+            <!--
+                <div class="get-ticket">
                 <h3 class="title">Get your ticket</h3>
                 <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
             </div>
-            <div class="get-merch">
-                <h3 class="title">Merch</h3>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            right container
+            -->
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="purchaseModalLabel">Purchase</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
+            <p class="body-title">Payment</p>
+            <p class="body-sub-title">Please confirm your payment details</p>
+        </div>
+        <div class="d-grid gap-2 modal-button-footer">
+            <button class="btn show-pay-btn" type="button">Pay With Card</button>
+        </div>
+      </div>
+    </div>
+  </div>

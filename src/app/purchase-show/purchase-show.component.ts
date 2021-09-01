@@ -65,9 +65,9 @@ export class PurchaseShowComponent implements OnInit {
     */
     this.titleService.setTitle(`Watch ${this.event.performers[0].name} Live`);
     this.metaService.addTags([
-      {name: 'description', content: `Checkout my livestream performance via Studio On Sunset of ${this.event.name} on ${this.helpers.setEventStartDate(this.event.start)}`},
-      {name: 'image', content: `${this.event.performers[0].profile_picture.formats.medium.url}`},
-      {name: 'robots', content: 'index, follow'}
+      { name: 'description', content: `Checkout my livestream performance via Studio On Sunset of ${this.event.name} on ${this.helpers.setEventStartDate(this.event.start)}` },
+      { name: 'image', content: `${this.event.performers[0].profile_picture.formats.medium.url}` },
+      { name: 'robots', content: 'index, follow' }
     ]);
   }
 
@@ -125,6 +125,17 @@ export class PurchaseShowComponent implements OnInit {
     }
   }
 
+  streamingDate(event) {
+    if (this.helpers.isBrowser()) {
+      let p = document.createElement('p')
+      if (event && new Date(event.start) <= new Date()) {
+        return 'Now Streaming'
+      } else if (event && event.start) {
+        return `Coming to Salticorn on ${this.helpers.setEventStartDate(event.start)}`
+      }
+    }
+  }
+
   copyLink() {
     if (this.helpers.isBrowser()) {
       const copyText = this.input.nativeElement;
@@ -148,6 +159,7 @@ export class PurchaseShowComponent implements OnInit {
   }
 
   modalListener() {
+    /*
     const modalEl = document.getElementById('shareModal')
     const videoModal = document.getElementById('previewModal')
     modalEl.addEventListener('hidden.bs.modal', function (event) {
@@ -158,6 +170,7 @@ export class PurchaseShowComponent implements OnInit {
       const video = document.querySelector('video')
       video.pause()
     })
+    */
   }
 
   toggleDisplay() {

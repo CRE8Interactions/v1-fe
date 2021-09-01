@@ -5,206 +5,230 @@ import { Autoplay, SwiperOptions } from 'swiper';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: [
+		'./home.component.scss'
+	]
 })
 export class HomeComponent implements OnInit {
-  public events: any;
-  public event: any;
-  public premieres: any;
-  public mostPopular: any;
-  public main: any;
-  public backgroundImage: any;
-  public featuredEvent: any;
-  public featuredImage: any;
-  public performers: any;
-  public genres: any;
-  public charting: any;
-  public eventTruncate: number;
-  public nameTruncate: number;
-  public isBrowser: boolean;
-  public loading = true;
-  public contentLoaded = false;
+	public events: any;
+	public event: any;
+	public premieres: any;
+	public mostPopular: any;
+	public main: any;
+	public backgroundImage: any;
+	public featuredEvent: any;
+	public featuredImage: any;
+	public performers: any;
+	public genres: any;
+	public charting: any;
+	public eventTruncate: number;
+	public nameTruncate: number;
+	public isBrowser: boolean;
+	public loading = true;
+	public contentLoaded = false;
 
-  config: SwiperOptions = {
-    pagination: { el: '.swiper-pagination', clickable: true },
-    simulateTouch: true,
-    loop: false,
-    centeredSlides: true,
-    centeredSlidesBounds: true,
-    width: 225,
-    navigation: {
-      nextEl: '.swiper-button-next1',
-      prevEl: '.swiper-button-prev1'
-    },
-    preloadImages: true,
-    spaceBetween: 35,
-    // Responsive breakpoints
-    // breakpoints: {
-    //   // when window width is >= 320px
-    //   320: {
-    //     slidesPerView: 2,
-    //     spaceBetween: 40
+	config: SwiperOptions = {
+		pagination: { el: '.swiper-pagination', clickable: true },
+		simulateTouch: true,
+		loop: false,
+		centeredSlidesBounds: true,
+		navigation: {
+			nextEl: '.swiper-button-next1',
+			prevEl: '.swiper-button-prev1'
+		},
+		preloadImages: true,
+		slidesPerView: 2,
+		spaceBetween: 20,
+		// Responsive breakpoints
+		breakpoints: {
+			// when window width is >= 576px
+			576: {
+				slidesPerView: 3
+			},
+			// when window width is >= 768px
+			768: {
+				slidesPerView: 4
+			},
+			// when window width is >= 992px
+			// 992: {
+			// 	slidesPerView: 5
+			// },
+			// images are too small at 992px but gap gets too big after 1000px
+			1100: {
+				slidesPerView: 5
+			},
+			// when window width is >= 1200px
+			1200: {
+				slidesPerView: 6
+			}
+		}
+	};
+	configAlt: SwiperOptions = {
+		pagination: { el: '.swiper-pagination', clickable: true },
+		simulateTouch: true,
+		loop: false,
+		centeredSlidesBounds: true,
+		navigation: {
+			nextEl: '.swiper-button-next2',
+			prevEl: '.swiper-button-prev2'
+		},
+		preloadImages: true,
+		slidesPerView: 2,
+		spaceBetween: 12,
+		// Responsive breakpoints
+		breakpoints: {
+			// when window width is >= 576px
+			576: {
+				slidesPerView: 3
+			},
+			// when window width is >= 768px
+			768: {
+				slidesPerView: 4
+			},
+			// when window width is >= 992px
+			992: {
+				slidesPerView: 5
+			},
+			// when window width is >= 1200px
+			1200: {
+				slidesPerView: 6
+			}
+		}
+	};
 
-    //   },
-    //   // when window width is >= 992px
-    //   992: {
-    //     slidesPerView: 4
-    //   }
-    // }
-  };
-  configAlt: SwiperOptions = {
-    pagination: { el: '.swiper-pagination', clickable: true },
-    simulateTouch: true,
-    loop: false,
-    centeredSlides: true,
-    centeredSlidesBounds: true,
-    width: 225,
-    navigation: {
-      nextEl: '.swiper-button-next2',
-      prevEl: '.swiper-button-prev2'
-    },
-    preloadImages: true,
-    spaceBetween: 35,
-    // Responsive breakpoints
-    breakpoints: {
-      // when window width is >= 320px
-      320: {
-        // slidesPerView: 2,
-        // spaceBetween: 40
+	constructor(
+		private api: ApiService,
+		private helpers: HelpersService,
+		private renderer2: Renderer2
+	) {}
 
-      },
-      // when window width is >= 992px
-      992: {
-        // slidesPerView: 4
-      }
-    }
-  };
+	@HostListener('window:scroll')
+	onScroll(e: Event): void {
+		const nav = document.querySelector('nav');
+	}
 
+	@HostListener('window:resize', [
+		'$event'
+	])
+	onResize(event) {
+		const windowSize = event.target.innerWidth;
+	}
 
-  constructor(
-    private api: ApiService,
-    private helpers: HelpersService,
-    private renderer2: Renderer2,
-  ) { }
+	ngOnInit(): void {
+		if (this.helpers.isBrowser() && !this.loading) {
+			this.getViewSize();
+		}
+		this.getEvents();
+		this.getPerformers();
+		this.getGenres();
+		this.getCharting();
+		this.isBrowser = this.helpers.isBrowser();
+		if (this.isBrowser) {
+			this.helpers.setBG();
+		}
+	}
 
-  @HostListener('window:scroll') onScroll(e: Event): void {
-    const nav = document.querySelector('nav');
-  }
+	getViewSize() {
+		const windowSize = window.innerWidth;
+		if (windowSize < 1185) {
+			this.setMobileView();
+		}
+		else {
+			this.unSetMobileView();
+		}
+	}
 
-  @HostListener('window:resize', ['$event']) onResize(event) {
-    const windowSize = event.target.innerWidth;
-  }
+	setMobileView() {
+		const chartsList = document.getElementById('charts-list');
+		chartsList.classList.add('list-group-horizontal');
+		this.eventTruncate = 14;
+		this.nameTruncate = 10;
+	}
 
-  
+	unSetMobileView() {
+		const chartsList = document.getElementById('charts-list');
+		if (chartsList) chartsList.classList.remove('list-group-horizontal');
+		this.eventTruncate = 30;
+		this.nameTruncate = 20;
+	}
 
-  ngOnInit(): void {
-    if (this.helpers.isBrowser() && !this.loading) {
-      this.getViewSize();
-    }
-    this.getEvents();
-    this.getPerformers();
-    this.getGenres();
-    this.getCharting();
-    this.isBrowser = this.helpers.isBrowser();
-    if (this.isBrowser) {
-      this.helpers.setBG()
-    }
-  }
+	getEvents() {
+		this.api.getEvents().subscribe((data: Array<any>) => {
+			(this.events = data),
+				(this.premieres = data
+					.filter((event) => event.status !== 'completed')
+					.sort((a, b) => new Date(b.start).getTime() + new Date(a.start).getTime()));
+			this.mostPopular = data
+				.filter((event) => event.status === 'completed' || event.status === 'live')
+				.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
+			this.event = this.events[0];
+			// this.assetService.setAsset(this.main);
+			this.getFeatured(data);
+		});
+	}
 
-  getViewSize() {
-    const windowSize = window.innerWidth;
-    if (windowSize < 1185) {
-      this.setMobileView()
-    } else {
-      this.unSetMobileView()
-    }
-  }
+	getFeatured(data) {
+		this.featuredEvent = data.find((event) => event.is_featured);
+		if (!this.featuredEvent) {
+			return (this.loading = false);
+		}
+		if (this.isBrowser) {
+			this.setBG();
+		}
+		this.backgroundImage = this.helpers.getImageCDNPath(
+			this.featuredEvent.performers[0].flyer.formats.small.url
+		);
+		this.featuredImage = this.backgroundImage;
+		this.loading = false;
+		this.contentLoaded = true;
+	}
 
-  setMobileView() {
-    const chartsList = document.getElementById('charts-list');
-    chartsList.classList.add('list-group-horizontal');
-    this.eventTruncate = 14;
-    this.nameTruncate = 10;
-  }
+	getPerformers() {
+		this.api.getArtists().subscribe((data) => (this.performers = data));
+	}
 
-  unSetMobileView() {
-    const chartsList = document.getElementById('charts-list');
-    if (chartsList) chartsList.classList.remove('list-group-horizontal');
-    this.eventTruncate = 30;
-    this.nameTruncate = 20;
-  }
+	getPerformerPic(pic) {
+		if (pic) {
+			return `${pic.url}`;
+		}
+	}
 
-  getEvents() {
-    this.api.getEvents().subscribe((data: Array<any>) => {
-      this.events = data,
-      this.premieres = data.filter(event => (event.status !== 'completed')).sort((a, b) => new Date(b.start).getTime() + new Date(a.start).getTime());
-      this.mostPopular = data.filter(event => event.status === 'completed' || event.status === 'live').sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
-      this.event = this.events[0];
-      // this.assetService.setAsset(this.main);
-      this.getFeatured(data);
-    });
-  }
+	getGenres() {
+		this.api.getGenres().subscribe((data) => (this.genres = data));
+	}
 
-  getFeatured(data) {
-    this.featuredEvent = data.find(event => event.is_featured);
-    if (!this.featuredEvent) {
-      return this.loading = false;
-    }
-    if (this.isBrowser) {
-      this.setBG();
-    }
-    this.backgroundImage = this.helpers.getImageCDNPath(this.featuredEvent.performers[0].flyer.formats.small.url);
-    this.featuredImage = this.backgroundImage;
-    this.loading = false;
-    this.contentLoaded = true;
-  }
+	getCharting() {
+		this.api.getCharting().subscribe((data) => (this.charting = data));
+	}
 
-  getPerformers() {
-    this.api.getArtists().subscribe(data => (this.performers = data));
-  }
+	setBG() {
+		//adding to absolute container rather than body so that the image can be set to cover, but also won't show too far down on the page
+		const bgContainer = document.getElementById('bg-container');
+		bgContainer.style.background = `linear-gradient(to bottom, rgba(26, 32, 48, 0.52), rgba(26, 32, 48, 1)), url(${this
+			.featuredEvent.background_image.formats.large.url})`;
+		bgContainer.style.backgroundRepeat = 'no-repeat';
+		bgContainer.style.backgroundPosition = 'top';
+		bgContainer.style.backgroundSize = 'cover';
+	}
 
-  getPerformerPic(pic) {
-    if (pic) {
-      return `${pic.url}`;
-    }
-  }
+	setEventStartDate(date) {
+		if (date) {
+			return this.helpers.setEventStartDate(date);
+		}
+	}
+	setEventStartTime(date) {
+		if (date) {
+			return this.helpers.setEventStartTime(date);
+		}
+	}
 
-  getGenres() {
-    this.api.getGenres().subscribe(data => (this.genres = data));
-  }
+	setEventDuration(start, end) {
+		return this.helpers.setEventDuration(start, end);
+	}
 
-  getCharting() {
-    this.api.getCharting().subscribe(data => (this.charting = data));
-  }
-
-  setBG() {
-    //adding to absolute container rather than body so that the image can be set to cover, but also won't show too far down on the page
-    const bgContainer = document.getElementById("bg-container");
-    bgContainer.style.background = `linear-gradient(to bottom, rgba(26, 32, 48, 0.52), rgba(26, 32, 48, 1)), url(${this.featuredEvent.background_image.formats.large.url})`;
-    bgContainer.style.backgroundRepeat = 'no-repeat';
-    bgContainer.style.backgroundPosition = 'top';
-    bgContainer.style.backgroundSize = 'cover';
-  }
-
-  setEventStartDate(date) {
-    if (date) {
-      return this.helpers.setEventStartDate(date);
-    }
-  }
-  setEventStartTime(date) {
-    if (date) {
-      return this.helpers.setEventStartTime(date);
-    }
-  }
-
-  setEventDuration(start, end) {
-    return this.helpers.setEventDuration(start, end);
-  }
-
-  truncateText(str, length, ending) {
-    return this.helpers.textTruncate(str, length, ending);
-  }
-
+	truncateText(str, length, ending) {
+		return this.helpers.textTruncate(str, length, ending);
+	}
 }

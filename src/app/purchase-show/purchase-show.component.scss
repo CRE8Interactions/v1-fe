@@ -1,13 +1,13 @@
 .purchase-show {
   min-height: 100vh;
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 162px;
 
   .artist-info {
     .artist-name {
       color: #FFDC4E;
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 24px;
+      font-weight: 800;
       padding-top: 17px;
     }
 
@@ -30,7 +30,11 @@
       color: #fff;
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 19px;
+      margin-bottom: 20px;
+    }
+
+    .event-start {
+      font-size: 18px;
     }
 
     img {
@@ -44,11 +48,25 @@
       margin-top: 20px;
 
       .btn-preview {
-        width: 123px;
-        height: 37px;
+        width: 178px;
+        height: 56px;
+        background: none;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 18px;
+
+        span.preview-btn-text {
+          padding-left: 10px;
+        }
+      }
+
+      .btn-purchase {
+        width: 178px;
+        height: 56px;
         background: #fff;
         border-radius: 6px;
         color: #0f121c;
+        font-size: 18px;
       }
 
       .btn-share {
@@ -110,4 +128,40 @@
       font-size: 36px;
     }
   }
+}
+
+.modal-body {
+  padding: 0 38px 0 38px;
+
+  .body-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 39px;
+  }
+
+  .body-sub-title {
+    color: #B0B9D3;
+    font-size: 14px;
+  }
+}
+
+.modal-content {
+  background-color: #151A27;
+  border-radius: 16px;
+}
+
+.modal-button-footer {
+  padding: 30px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+h5.modal-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

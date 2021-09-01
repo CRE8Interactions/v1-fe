@@ -34,6 +34,7 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { SignupComponent } from './signup/signup.component';
 import { SupportComponent } from './support/support.component';
 import { MyShowsComponent } from './my-shows/my-shows.component';
+import { LiveNowComponent } from './live-now/live-now.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { MyShowsComponent } from './my-shows/my-shows.component';
     SignupComponent,
     SupportComponent,
     TicketComponent,
-    MyShowsComponent
+    MyShowsComponent,
+    LiveNowComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,173 +1,237 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;600;700;800&display=swap');
-
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 1185px,
-    xl: 1200px,
-    xxl: 1400px
-);
+@import './app/app.component.scss';
 
 body {
-    background-color: #1a2030 !important;
-    // background-color: darkgrey !important;
-    // ^ changing bg color temporarily  to make things more visible 
-    font-family: 'Montserrat', sans-serif !important;
-    color: #fff !important;
-    -webkit-font-smoothing: antialiased !important;
-    overflow-x: hidden;
+	background-color: #1a2030 !important;
+	// background-color: darkgrey !important;
+	// ^ changing bg color temporarily  to make things more visible
+	font-family: 'Montserrat', sans-serif !important;
+	color: #fff !important;
+	-webkit-font-smoothing: antialiased !important;
+	overflow-x: hidden;
 }
-
-
 *:focus {
-    box-shadow: none !important;
-}
-.swiper-wrapper {
-    box-sizing: border-box;
-    width: 100%;
+	box-shadow: none !important;
 }
 
-.swiper-container .swiper-wrapper .different-photo {
-    background-size: cover;
+img {
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
 }
+
+strong {
+	color: $clr-primary;
+}
+
 .alt-color {
-    color: #ffd83b !important;
+	color: #ffd83b !important;
 }
 
-.swiper-container .swiper-wrapper .swiper-slide {
-    background-size: cover;
-    background-position-y: bottom;
-    border-radius: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    padding-bottom: 19px;
-    // Extra Small devices (landscape phones, 576px and up)
-    @media (max-width: 576px) {
-        min-height: 221px;
-        max-height: 221px;
-        min-width: 192px;
-        max-width: 192px;
-        a {
-            text-decoration: none;
-        }
-        section {
-            color: #fff;
-            text-decoration: none;
-            padding-left: 19px;
-            .swipe-event {
-                font-size: 18px;
-            }
-            .swipe-artist {
-                font-size: 14px;
-                font-weight: 400;
-            }
-        }
-    }
-    // Small devices (landscape phones, 576px and up)
-    @media (min-width: 576px) {
-        min-height: 221px;
-        max-height: 221px;
-        min-width: 192px;
-        max-width: 192px;
-        a {
-            text-decoration: none;
-        }
-        section {
-            color: #fff;
-            text-decoration: none;
-            padding-left: 19px;
-            .swipe-event {
-                font-size: 18px;
-            }
-            .swipe-artist {
-                font-size: 14px;
-                font-weight: 400;
-            }
-        }
-    }
-
-    // Medium devices (tablets, 768px and up)
-    @media (min-width: 768px) { 
-        min-height: 221px;
-        max-height: 221px;
-        min-width: 192px;
-        max-width: 192px;
-        a {
-            text-decoration: none;
-        }
-        section {
-            color: #fff;
-            text-decoration: none;
-            padding-left: 19px;
-            .swipe-event {
-                font-size: 18px;
-            }
-            .swipe-artist {
-                font-size: 14px;
-                font-weight: 400;
-            }
-        }
-    }
+.max-width-wrapper,
+.copyright-wrapper {
+	@include container;
 }
 
- // Extra Small devices (landscape phones, 576px and up)
- @media (max-width: 576px) {
-    .container {
-        max-width: 91vw !important;
-    }
+.container-fluid {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
- // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-    .container {
-        max-width: 92vw !important;
-    }
+.section-heading {
+	margin-bottom: em(12);
+	.section-title {
+		font-weight: 800;
+		color: #fff;
+		font-size: rem(36);
+		white-space: nowrap;
+		@media (max-width: 576px) {
+			font-size: 28px;
+			margin-bottom: 0;
+		}
+
+		@media (max-width: 576px) {
+			font-size: rem(24);
+		}
+	}
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
-    .container {
-        max-width: 92vw !important;
-    }
+/* Swiper global styles */
+.swiper-container {
+	height: 375px;
+
+	// @media (max-width: 500px) {
+	// 	width: 98%;
+	// }
+
+	.swiper-wrapper {
+		margin-top: em(5);
+		box-sizing: border-box;
+		width: 100%;
+
+		.different-photo {
+			background-size: cover;
+		}
+
+		.nav-blur {
+			backdrop-filter: blur(25px);
+			-webkit-backdrop-filter: blur(25px);
+		}
+	}
+	.hover-wrapper {
+		transition: all 0.3s ease-in-out;
+	}
+	.swiper-slide {
+		cursor: pointer;
+		// width: calc(5vw + 20%) !important;
+		// max-width: 225px;
+		// min-width: 225px;
+		// margin: 0px 0px 0px rem(5);
+		// border: 5px solid transparent;
+		// display: flex;
+		flex-direction: column;
+		transition: all 0.3s ease-in-out;
+		// removed per HC request
+		// &:hover .hover-wrapper {
+		//   // transition: all 0.3s ease-in-out;
+		//   // margin-top: -20px;
+		// }
+
+		background-size: cover;
+		background-position-y: bottom;
+
+		border-radius: 20px;
+		position: relative;
+		// display: -webkit-box;
+		// display: -ms-flexbox;
+		// display: flex;
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+		margin-bottom: em(19);
+		// Extra Small devices (landscape phones, 576px and up)
+		@media (max-width: 576px) {
+			// min-height: 221px;
+			// max-height: 221px;
+
+			// min-width: 192px;
+			// max-width: 192px;
+			a {
+				text-decoration: none;
+			}
+			section {
+				color: #fff;
+				text-decoration: none;
+				padding-left: 19px;
+				.swipe-event {
+					font-size: 18px;
+				}
+				.swipe-artist {
+					font-size: 14px;
+					font-weight: 400;
+				}
+			}
+		}
+
+		// .image-wrapper {
+		// 	position: relative;
+		// 	width: auto;
+		// 	justify-content: center;
+		// }
+
+		.artist-img {
+			border-radius: 10px;
+			// position: absolute;
+			// display: block;
+			// width: 0px;
+			// height: 0px;
+			// min-width: 100%;
+			// max-width: 100px;
+			// min-height: 100%;
+			// max-height: 100%;
+		}
+
+		.card-details {
+			padding: 0px 1em 0px 0px;
+		}
+
+		.event {
+			font-size: em(18);
+			margin: 20px 0 5px 0;
+			font-weight: 700;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: inherit;
+		}
+		.artist {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: inherit;
+		}
+
+		//   ****removed per HC request****
+		// .btn-wrapper {
+		//   opacity: 0;
+		//   position: absolute;
+		//   top: 0;
+		//   width: 100%;
+		//   height: 102%;
+		//   border-radius: 10px;
+		//   // background-color: grey;
+		//   background-color: rgba(0,0,0,0.6);
+		//   transition: all 0.3s ease-in-out;
+		//   &:hover {
+		//     // transition: all 0.3s ease-in-out;
+		//     opacity: 1;
+		//   }
+		//   .slide-btn {
+		//     font-size: 12px;
+		//     border-radius: 8px;
+		//     border: 2px solid #ffdc4e;
+		//     width: 111px;
+		//     height: 41px;
+		//     margin-bottom: 10px;
+		//     &:active {
+		//       background-color: #ffcc00;
+		//     }
+		//   }
+		//   .btn-sos-main {
+		//     background-color: #FFDC4E;
+		//   }
+		//   .btn-sos-secondary {
+		//     color: white;
+		//     background-color: #20212B;
+		//     &:hover {
+		//       background-color: #ffdc4e;
+		//       color: black;
+		//       &:active {
+		//         background-color: #ffcc00;
+		//       }
+		//     }
+		//   }
+		// }
+	}
 }
 
-// Large devices (desktops, 1185px and up)
-@media (min-width: 1185px) { 
-    .container {
-        max-width: 92vw !important;
-    }
-}
-
-// X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { 
-    .container {
-        max-width: 92vw !important;
-    }
-}
-
-.nav-blur {
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25 px);
-}
 .profile-category-max-width {
-    max-width: 630px;
-    @media (max-width: 1200px) {
-        max-width: 540px;
-    }
-    @media (max-width: 992px) {
-        max-width: 610px;
-    }
-    @media (max-width: 768px) {
-        max-width: 696px;
-    }
-
-
+	max-width: 630px;
+	@media (max-width: 1200px) {
+		max-width: 540px;
+	}
+	@media (max-width: 992px) {
+		max-width: 610px;
+	}
+	@media (max-width: 768px) {
+		max-width: 696px;
+	}
+}
+.show-pay-btn {
+	background: linear-gradient(105deg, #ffd83b, #ffa43b);
+	color: #000;
+	text-transform: uppercase;
 }
 
 @import "bootstrap";

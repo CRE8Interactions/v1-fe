@@ -1,167 +1,117 @@
+@import '../../app.component.scss';
+
 footer {
-  background-color: #171a20;
+	background-color: #171a20;
 
-  .below-text {
-    font-size: 14px;
-    font-weight: 400;
-    color: #adb5cb;
-  }
-  .form-control {
-    color: white;
-    background-color: #090c14;
-    font-size: 14px;
-    border: 1px solid #adb5cb50;
-    height: 53px;
-  }
-  hr {
-    margin: 0;
-    padding: 0;
-    opacity: 0.1;
-  }
-  .icon {
-    padding-right: 17px;
-  }
-  .input-group-text {
-    background-color: #151e31;
-    color: #ffd83b;
-    text-transform: uppercase;
-    border-left: none;
-    border: 1px solid #adb5cb50;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 9px 15px;
-  }
-  .list-group-item {
-    white-space: nowrap;
-    background-color: transparent;
-    border: none;
-    padding: 0 0 21px 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #adb5cb;
-    //put in to compensate for footer icons slightly widening list items. 
-    //TODO: figure out way to remove this class from being needed
-    .footer-margin-fix {
-      margin-left: -1px;
-      @media (max-width: 768px) {
-        margin-left: inherit;
-      }
-    }
-    @media (max-width: 1200px) {
-      padding-left: 10px;
-    }
-    @media (max-width: 768px) {
-      padding-left: unset;
-    }
-  }
-  .list-group-wrapper {
-    max-width: 170px;
-    margin-right: 32px;
-    @media (max-width: 1440px) {
-      margin-right: 30px;
-    }
-    @media (max-width: 825px) {
-      margin-right: 22px;
-      
-    }
-    @media (max-width: 767px) {
-      margin-top: 30px;
-    }
-    @media (max-width: 450px) {
-      max-width: 150px;
-    }
-  }
-  .logo {
-    width: 92px;
-    height: 63px;
-  }
-  .title {
-    font-size: 16px;
-    font-weight: 600;
-    padding-top: 20px;
-    text-transform: uppercase;
-  }
-  .updates {
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 25px;
-  }
-  .updates-container {
-    max-width: 415px;
-    padding: 0;
-    @media (max-width: 1184px) {
-      margin-top: 30px;
-    }
-  }
-  .link {
-    text-decoration: none;
-    color: inherit;
-    &:hover {
-      color: #ffd83b;
-    }
-    
-  }
+	.below-text {
+		font-size: 14px;
+		font-weight: 400;
+		color: #adb5cb;
+	}
 
-  .links-wrapper .list-group-wrapper:nth-child(2) {
-    max-width: 100px;
-    margin-right: 28px;
-    @media (max-width: 1440px) {
-      margin-right: 28px;
-    }
-  }
-  .links-wrapper .list-group-wrapper:nth-child(1) {
-    // padding-left: 20px !important;
-    @media (max-width: 767px) {
-      padding-left: 0 !important;
-    }
-  }
+	.form-control {
+		color: white;
+		background-color: #090c14;
+		font-size: 14px;
+		border: 1px solid #adb5cb50;
+		height: 53px;
+	}
+
+	hr {
+		margin: 0;
+		padding: 0;
+		opacity: 0.1;
+	}
+
+	.icon {
+		padding-right: 17px;
+	}
+
+	.input-group-text {
+		background-color: #151e31;
+		color: #ffd83b;
+		text-transform: uppercase;
+		border-left: none;
+		border: 1px solid #adb5cb50;
+		font-size: 14px;
+		font-weight: 500;
+		padding: 9px 15px;
+	}
+
+	.list-group-item {
+		white-space: nowrap;
+		background-color: transparent;
+		border: none;
+		padding: 0 0 21px 0;
+		font-size: 14px;
+		font-weight: 600;
+		color: #adb5cb;
+	}
+
+	.list-group-wrapper {
+		max-width: 170px;
+		margin-right: 32px;
+
+		@media (max-width: 767px) {
+			margin-top: 30px;
+		}
+
+		@media (max-width: 450px) {
+			max-width: 150px;
+		}
+	}
+
+	.logo {
+		width: 142px;
+	}
+
+	.title {
+		font-size: 16px;
+		font-weight: 600;
+		padding-top: 20px;
+		text-transform: uppercase;
+	}
+
+	.updates {
+		font-weight: 600;
+		font-size: 20px;
+	}
+
+	.updates-container {
+		max-width: 415px;
+		padding: 0;
+
+		@media (max-width: 1200px) {
+			margin-top: em(50);
+		}
+	}
+
+	.link {
+		text-decoration: none;
+		color: inherit;
+
+		&:hover {
+			color: #ffd83b;
+		}
+	}
+
+	.links-wrapper {
+		.list-group-wrapper:nth-child(2) {
+			max-width: 100px;
+			margin-right: 28px;
+		}
+		.list-group-wrapper:nth-child(1) {
+			@media (max-width: 767px) {
+				padding-left: 0 !important;
+			}
+		}
+	}
 }
 
 .max-width-wrapper {
-  max-width: 1575px !important;
-  padding: 45px 74px 20px 74px;
-  @media (min-width: 1575px) {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-  @media (max-width: 1200px) {
-    padding-left: 45px;
-    padding-right: 45px;
-  }
-  @media (max-width: 992px) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media (max-width: 576px) {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  @media (max-width: 500px) {
-    padding-left: 11px;
-    padding-right: 11px;
-  }
+	padding: em(45) 0px em(20) 0px;
 }
+
 .copyright-wrapper {
-  max-width: 1575px !important;
-  @media (min-width: 1575px) {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-  padding: 20px 73px;
-  @media (max-width: 1200px) {
-    padding-left: 45px;
-    padding-right: 45px;
-  }
-  @media (max-width: 992px) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media (max-width: 576px) {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  @media (max-width: 500px) {
-    padding-left: 11px;
-    padding-right: 11px;
-  }
+	padding: em(20) 0px;
 }
