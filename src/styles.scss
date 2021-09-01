@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;600;700;800&display=swap');
+<<<<<<< HEAD
 @import './app/app.component.scss';
+=======
+
+
+
+
+$grid-breakpoints: (xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1185px,
+  xl: 1200px,
+  xxl: 1400px);
+>>>>>>> 974ac3741a827b97e6a284390505906b868f0d25
 
 body {
 	background-color: #1a2030 !important;

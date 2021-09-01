@@ -48,7 +48,7 @@ export class PurchaseShowComponent implements OnInit {
     document.body.style.backgroundImage = `linear-gradient(to bottom, rgba(26, 32, 48, 0.52), rgba(26, 32, 48, 1)), url(${this.event.background_image.formats.large.url})`;
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.backgroundSize = '100% 100%';
+    document.body.style.backgroundSize = 'cover';
   }
 
   setMetaData() {
