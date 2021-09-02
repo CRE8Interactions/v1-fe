@@ -39,6 +39,7 @@ strong {
 	padding-right: 0px !important;
 }
 
+// All page titles and titles of sliders
 .section-heading {
 	margin-bottom: em(12);
 }
@@ -60,14 +61,10 @@ strong {
 
 /* Swiper global styles */
 .swiper-container {
+	margin-top: em(5);
 	margin-bottom: em(19.2);
 
-	// @media (max-width: 500px) {
-	// 	width: 98%;
-	// }
-
 	.swiper-wrapper {
-		margin-top: em(5);
 		box-sizing: border-box;
 		width: 100%;
 
@@ -86,13 +83,6 @@ strong {
 	.swiper-slide {
 		transition: none !important;
 		cursor: pointer;
-		// width: calc(5vw + 20%) !important;
-		// max-width: 225px;
-		// min-width: 225px;
-		// margin: 0px 0px 0px rem(5);
-		// border: 5px solid transparent;
-		// display: flex;
-		flex-direction: column;
 		transition: all 0.3s ease-in-out;
 		// removed per HC request
 		// &:hover .hover-wrapper {
@@ -105,20 +95,8 @@ strong {
 
 		border-radius: 20px;
 		position: relative;
-		// display: -webkit-box;
-		// display: -ms-flexbox;
-		// display: flex;
-		-webkit-box-align: end;
-		-ms-flex-align: end;
-		align-items: flex-end;
-		// margin-bottom: em(19);
 		// Extra Small devices (landscape phones, 576px and up)
 		@media (max-width: 576px) {
-			// min-height: 221px;
-			// max-height: 221px;
-
-			// min-width: 192px;
-			// max-width: 192px;
 			a {
 				text-decoration: none;
 			}
@@ -136,23 +114,9 @@ strong {
 			}
 		}
 
-		// .image-wrapper {
-		// 	position: relative;
-		// 	width: auto;
-		// 	justify-content: center;
-		// }
-
 		.artist-img {
 			border-radius: 10px;
 			width: 100%;
-			// position: absolute;
-			// display: block;
-			// width: 0px;
-			// height: 0px;
-			// min-width: 100%;
-			// max-width: 100px;
-			// min-height: 100%;
-			// max-height: 100%;
 		}
 
 		.event {

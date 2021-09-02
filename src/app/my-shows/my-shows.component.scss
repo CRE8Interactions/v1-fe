@@ -8,21 +8,23 @@
 	// 	font-size: 28px;
 	// 	font-weight: bold;
 	// }
+
+	.section-heading {
+		margin-bottom: em(20);
+	}
 }
 
 .swiper-container {
-	height: auto;
-
 	// swiper doesn't show all slides at small screens
 	.swiper-wrapper {
-		@media (max-width: 576px) {
+		@media (max-width: 768px) {
 			width: 100vw !important;
 		}
 
 		// adding margin to second row of slides siperjs bug in 16v
 		.swiper-slide {
 			margin-top: 0px !important;
-			margin-bottom: em(19);
+			margin-bottom: em(52);
 		}
 	}
 }
