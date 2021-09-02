@@ -43,25 +43,29 @@ export class HomeComponent implements OnInit {
 		spaceBetween: 20,
 		// Responsive breakpoints
 		breakpoints: {
-			// when window width is >= 576px
-			576: {
-				slidesPerView: 3
-			},
+			// 576: {
+			// 	slidesPerView: 3
+			// },
 			// when window width is >= 768px
 			768: {
-				slidesPerView: 4
+				slidesPerView: 3
 			},
 			// when window width is >= 992px
+			// images are too small
 			// 992: {
 			// 	slidesPerView: 5
 			// },
-			// images are too small at 992px but gap gets too big after 1000px
-			1100: {
-				slidesPerView: 5
+			// when window width is >= 1200
+			1200: {
+				slidesPerView: 4
 			},
 			// when window width is >= 1200px
-			1200: {
-				slidesPerView: 6
+			// 1200: {
+			// 	slidesPerView: 6
+			// }
+			// when window width is >= 1440
+			1440: {
+				slidesPerView: 5
 			}
 		}
 	};
@@ -76,24 +80,32 @@ export class HomeComponent implements OnInit {
 		},
 		preloadImages: true,
 		slidesPerView: 2,
-		spaceBetween: 12,
+		spaceBetween: 20,
 		// Responsive breakpoints
 		breakpoints: {
-			// when window width is >= 576px
-			576: {
-				slidesPerView: 3
-			},
+			// 576: {
+			// 	slidesPerView: 3
+			// },
 			// when window width is >= 768px
 			768: {
-				slidesPerView: 4
+				slidesPerView: 3
 			},
 			// when window width is >= 992px
-			992: {
-				slidesPerView: 5
+			// images are too small
+			// 992: {
+			// 	slidesPerView: 5
+			// },
+			// when window width is >= 1200
+			1200: {
+				slidesPerView: 4
 			},
 			// when window width is >= 1200px
-			1200: {
-				slidesPerView: 6
+			// 1200: {
+			// 	slidesPerView: 6
+			// }
+			// when window width is >= 1440
+			1440: {
+				slidesPerView: 5
 			}
 		}
 	};

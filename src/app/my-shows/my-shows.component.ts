@@ -31,9 +31,7 @@ export class MyShowsComponent implements OnInit {
 		pagination: { el: '.swiper-pagination', clickable: true },
 		simulateTouch: true,
 		loop: false,
-		// centeredSlides: true,
-		// centeredSlidesBounds: true,
-		// width: 225,
+		centeredSlidesBounds: true,
 		slidesPerView: 2,
 		slidesPerColumn: 2,
 		navigation: {
@@ -48,28 +46,29 @@ export class MyShowsComponent implements OnInit {
 		// Responsive breakpoints
 		breakpoints: {
 			// when window width is >= 576px
-			576: {
+			// 576: {
+			// 	slidesPerView: 3,
+			// 	slidesPerColumn: 3
+			// },
+			// when window width is >= 768px
+			768: {
 				slidesPerView: 3,
 				slidesPerColumn: 3
 			},
-			// when window width is >= 768px
-			768: {
-				slidesPerView: 4,
-				slidesPerColumn: 4
-			},
 			// when window width is >= 992px
+			// images are too small
 			// 992: {
 			// 	slidesPerView: 5
 			// },
-			// images are too small at 992px but gap gets too big after 1000px
-			1100: {
+			// when window width is >= 1200
+			1200: {
+				slidesPerView: 4,
+				slidesPerColumn: 4
+			},
+			// when window width is >= 1440px
+			1440: {
 				slidesPerView: 5,
 				slidesPerColumn: 5
-			},
-			// when window width is >= 1200px
-			1200: {
-				slidesPerView: 6,
-				slidesPerColumn: 6
 			}
 		}
 	};
