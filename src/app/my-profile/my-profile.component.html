@@ -1,95 +1,65 @@
 <div class="row my-profile-wrapper ms-0">
-    <div class="user-container px-0">
-        <!-- <div class="username-img-wrapper"> -->
-            <img src="../images/user-avatar.png" class="user-img ">
-            <span class="username-label">{{ user?.username }}</span>
-        <!-- </div> -->
-    </div>
-    <div class="category--wrapper ms-0 px-0">
-        <p class="intro">Hi, User Name</p>
-        <p class="sub">Here you’ll be able to change your settings</p>
-        <!-- begin first card row -->
-        <div class="card-group profile-group pg-row">
-            <!-- begin 1st card row flex wrapper -->
-            <div class="row row-wrapper mx-auto w-100">
-                <!-- first card container "Personal Details" -->
-                <div class="col-6 px-0 card left-card-border top-card-border"
-                    routerLink="/account/profile/personal-details">
-                    <div class="card-body">
-                        <h5 class="card-title"><img src="../../images/icons/profile-user.svg" width="auto" height="27px"
-                                alt="details icon"></h5>
-                        <p class="card-text card-category">Personal Details</p>
-                        <p class="card-text"><small class="text-muted">Provide all the personal Information and how we
-                                can reach you</small></p>
-                    </div>
-                </div>
-                <!-- begin 2nd card container -->
-                <div class="col-6 card right-card-border top-card-border pe-0 ps-sm-3"
-                    routerLink="/account/profile/login-security">
-                    <div class="card-body">
-                        <h5 class="card-title"><img src="../images/icons/profile-log-in-outline.svg" alt="security"
-                                width="auto" height="27px"></h5>
-                        <p class="card-text card-category">Login & Security</p>
-                        <p class="card-text"><small class="text-muted">Change your password and make sure your account
-                                is secure</small></p>
-                    </div>
-                </div>
-                <!-- end of second card container -->
-            </div>
-            <!-- end of 1st row flex wrapper -->
-        </div>
-        <!-- end of first card row -->
-        <!-- ************************************************************************** -->
-        <!-- begin 2nd card row container -->
-        <div class="card-group profile-group">
-            <div class="row row-wrapper mx-auto w-100">
-                <!-- 2nd row - 1st card on row -->
-                <div class="col-6 px-0 card left-card-border" routerLink="/account/profile/invoices">
-                    <div class="card-body">
-                        <h5 class="card-title"><img src="../images/icons/profile-invoice.svg" alt="invoice icon"
-                                width="auto" height="27px"></h5>
-                        <p class="card-text card-category">Invoices</p>
-                        <p class="card-text"><small class="text-muted">View / Download your previous invoices</small>
-                        </p>
-                    </div>
-                </div>
-                <!-- 2nd row - 2nd card on row -->
-                <div class="col-6 card right-card-border pe-0 ps-sm-3" routerLink="/account/profile/address">
-                    <div class="card-body">
-                        <h5 class="card-title"><img src="../../images/icons/profile-address-card.svg" alt="address icon"
-                                width="auto" height="27px"></h5>
-                        <p class="card-text card-category">Shipping Address</p>
-                        <p class="card-text"><small class="text-muted">Update your shipping address for additional merch
-                                purchases</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end of 2nd row -->
-        <!-- ************************************************************************** -->
-        <!-- begin 3rd row -->
-        <div class="card-group profile-group">
-            <div class="row row-wrapper mx-auto w-100">
-                <div class="col-6 px-0 card left-card-border bottom-card-border"
-                    routerLink="/account/profile/newsletter">
-                    <div class="card-body">
-                        <h5 class="card-title"><img src="../../images/icons/profile-newsletter.svg"
-                                alt="newsletter icon" width="auto" height="27px"></h5>
-                        <p class="card-text card-category">Newsletter</p>
-                        <p class="card-text"><small class="text-muted">Set up your newsletter to receive information
-                                about
-                                upcoming events</small></p>
-                    </div>
-                </div>
-                <div class="col-6 px-0 card right-card-border bottom-card-border px-0 ps-sm-3">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text card-category"></p>
-                        <p class="card-text"><small class="text-muted"></small></p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+	<div class="col-md-2 col-lg-3 user-container px-0">
+		<!-- <div class="username-img-wrapper"> -->
+		<img src="../images/user-avatar.png" class="user-img ">
+		<span class="username-label">{{ user?.username }}</span>
+		<!-- </div> -->
+	</div>
+	<div class="col-md-8 settings-wrapper ms-0 px-0">
+		<p class="intro">Hi, User Name</p>
+		<p class="sub">Here you’ll be able to change your settings</p>
+		<!-- begin profile settings -->
+		<div class="profile-settings">
+			<!-- begin 1st row -->
+			<div class="row mx-auto w-100">
+				<!-- first card -->
+				<div class="card col-6 px-0" routerLink="/account/profile/personal-details">
+					<img src="../../images/icons/profile-user.svg" width="auto" height="27px" alt="Details">
+					<div class="card-body">
+						<h5 class="card-title">Personal Details</h5>
+						<p class="card-text"><small class="text-muted">Provide all the personal Information and how
+								we
+								can reach you</small></p>
+					</div>
+				</div>
+				<!-- second card -->
+				<div class="card col-6 pe-0" routerLink="/account/profile/login-security">
+					<img src="../images/icons/profile-log-in-outline.svg" alt="security" width="auto" height="27px">
+					<div class="card-body">
+						<h5 class="card-title">Login & Security</h5>
+						<p class="card-text"><small class="text-muted">Change your password and make sure your
+								account
+								is secure</small></p>
+					</div>
+				</div>
+				<!-- end of second card -->
+			</div>
+			<!-- end of 1st row -->
+			<!-- begin 2nd row -->
+			<div class="row mx-auto w-100">
+				<!-- 1st card  -->
+				<div class="card col-6 px-0" routerLink="/account/profile/invoices">
+					<img src="../images/icons/profile-invoice.svg" alt="invoice" width="auto" height="27px">
+					<div class="card-body">
+						<p class="card-title">Invoices</p>
+						<p class="card-text"><small class="text-muted">View / Download your previous
+								invoices</small>
+						</p>
+					</div>
+				</div>
+				<!-- second card -->
+				<div class="card col-6 px-0" routerLink="/account/profile/newsletter">
+					<img src="../../images/icons/profile-newsletter.svg" alt="newsletter icon" width="auto"
+						height="27px">
+					<div class="card-body">
+						<p class="card-title card-category">Newsletter</p>
+						<p class="card-text"><small class="text-muted">Set up your newsletter to receive information
+								about
+								upcoming events</small></p>
+					</div>
+				</div>
+			</div>
+			<!-- end of 2nd row -->
+		</div>
+	</div>
 </div>

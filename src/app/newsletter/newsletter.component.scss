@@ -1,71 +1,70 @@
 .check-row {
-    margin-bottom: 3px;
-    @media (max-width: 375px) {
-        margin-bottom: 18px;
-    }
-    .fa-square {
-        color: #ffd83b;
-    }
-    p {
-        margin-top: 5px;
-        margin-left: 10px;
-    }
+	margin-bottom: 3px;
+	@media (max-width: 375px) {
+		margin-bottom: 18px;
+	}
+	.fa-square {
+		color: #ffd83b;
+	}
+	p {
+		margin-top: 5px;
+		margin-left: 10px;
+	}
 }
 .interest {
-    margin-top: 48px;
-    .heading {
-        font-size: 18px;
-        font-weight: 600;
-    }
-    .choices {
-        margin-top: 30px;
-        margin-bottom: 138px;
-        @media (max-width: 768px) {
-            margin-bottom: 384px;
-        }
-    }
-    .disclaimer-row {
-        margin-top: 33px;
-        margin-bottom: 38px;
-        font-size: 14px;
-        color: #CACACA;
-    }
-    .link-text {
-        color: #ffd83b;
-        text-decoration: none;
-    }
-    .form-check-label {
-        cursor: pointer;
-    }
+	margin-top: 48px;
+	.heading {
+		font-size: 18px;
+		font-weight: 600;
+	}
+	.choices {
+		margin-top: 30px;
+		margin-bottom: 138px;
+		@media (max-width: 768px) {
+			margin-bottom: 384px;
+		}
+	}
+	.disclaimer-row {
+		margin-top: 33px;
+		margin-bottom: 38px;
+		font-size: 14px;
+		color: #cacaca;
+	}
+	.link-text {
+		color: #ffd83b;
+		text-decoration: none;
+	}
+	.form-check-label {
+		cursor: pointer;
+	}
 }
 
-
 .s-btn {
-    background: linear-gradient(95.65deg, #ffd83b 4.5%, #ffa43b 97.15%);
-    border-radius: 6px;
-    border: none;
-    color: #232b31;
-    font-style: normal;
-    font-weight: 600;
-    height: 51px;
+	background: linear-gradient(95.65deg, #ffd83b 4.5%, #ffa43b 97.15%);
+	border-radius: 6px;
+	border: none;
+	color: #232b31;
+	font-style: normal;
+	font-weight: 600;
+	height: 51px;
 }
 
 .form-check-input {
-    display: none;
+	display: none;
 }
 
-input[type='checkbox']+ label:before {
-    font-family: 'Font Awesome 5 Free';
-    content: "\f0c8";
-	font-size:1.7rem;
-	cursor:pointer;
-    color: #ffd83b;
-    margin-right: 10px;
- }
+input[type='checkbox'] + label:before {
+	font-family: 'Font Awesome 5 Free';
+	content: "\f0c8";
+	font-size: 1.7rem;
+	cursor: pointer;
+	color: #ffd83b;
+	margin-right: 10px;
+}
 
- input[type='checkbox']:checked + label:before {
-    content: "\f14a";
-	font-size:1.7rem;
-	cursor:pointer;
-    color: #ffd83b;
+input[type='checkbox']:checked + label:before {
+	content: "\f14a";
+	font-size: 1.7rem;
+	cursor: pointer;
+	color: #ffd83b;
 }
