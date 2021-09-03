@@ -22,7 +22,7 @@ export class HelpersService {
     @Inject(PLATFORM_ID) private platformId: any,
     @Inject(Location) private location: Location,
     private tokenService: TokenService
-  ) {}
+  ) { }
 
   goBack() {
     this.location.back()
@@ -54,14 +54,14 @@ export class HelpersService {
   }
 
   setEventDuration(start, end) {
-      if (start && end) {
-          const s = moment(start)
-          const e = moment(end)
-          // removed hours since no show will be longer than 60min
-          // const hours = e.diff(s, 'hours', true).toFixed(1).split('.')[0];
-          const minutes = e.diff(s, 'minutes', true)
-          return `${minutes}min`
-      }
+    if (start && end) {
+      const s = moment(start)
+      const e = moment(end)
+      // removed hours since no show will be longer than 60min
+      // const hours = e.diff(s, 'hours', true).toFixed(1).split('.')[0];
+      const minutes = e.diff(s, 'minutes', true)
+      return `${minutes}min`
+    }
   }
 
   getDaysUntil(start, end) {
@@ -73,15 +73,15 @@ export class HelpersService {
   }
 
   getEventDay(date) {
-      if (date) {
-          return moment(date).format('DD')
-      }
+    if (date) {
+      return moment(date).format('DD')
+    }
   }
 
   getEventMonth(date) {
-      if (date) {
-          return moment(date).format('MMM')
-      }
+    if (date) {
+      return moment(date).format('MMM')
+    }
   }
 
   getPremieredDate(date) {
@@ -113,10 +113,10 @@ export class HelpersService {
       const distance = start - now;
       if (distance) {
         // Time calculations for days, hours, minutes and seconds
-      this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
       }
       return `${this.days}D, ${this.hours}H, ${this.minutes}M, ${this.seconds}S`;
     }
@@ -184,6 +184,12 @@ export class HelpersService {
     this.tokenService.signOut();
     if (this.isBrowser()) {
       window.location.reload()
+    }
+  }
+
+  toTop() {
+    if (this.isBrowser()) {
+      scroll(0, 0)
     }
   }
 

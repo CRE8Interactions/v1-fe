@@ -1,214 +1,214 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;600;700;800&display=swap');
-<<<<<<< HEAD
 @import './app/app.component.scss';
-=======
-
-
-
-
-$grid-breakpoints: (xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 1185px,
-  xl: 1200px,
-  xxl: 1400px);
->>>>>>> 974ac3741a827b97e6a284390505906b868f0d25
 
 body {
-	background-color: #1a2030 !important;
-	// background-color: darkgrey !important;
-	// ^ changing bg color temporarily  to make things more visible
-	font-family: 'Montserrat', sans-serif !important;
-	color: #fff !important;
-	-webkit-font-smoothing: antialiased !important;
-	overflow-x: hidden;
+  background-color: #1a2030 !important;
+  // background-color: darkgrey !important;
+  // ^ changing bg color temporarily  to make things more visible
+  font-family: 'Montserrat', sans-serif !important;
+  color: #fff !important;
+  -webkit-font-smoothing: antialiased !important;
+  overflow-x: hidden;
 }
+
 *:focus {
-	box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
-	object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 strong {
-	color: $clr-primary;
+  color: $clr-primary;
 }
 
 .alt-color {
-	color: #ffd83b !important;
+  color: #ffd83b !important;
 }
 
 .max-width-wrapper,
 .copyright-wrapper {
-	@include container;
+  @include container;
 }
 
 .container-fluid {
-	padding-left: 0px !important;
-	padding-right: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 // All page titles and titles of sliders
 .section-heading {
-	margin-bottom: em(12);
+  margin-bottom: em(12);
 }
 
 .section-title {
-	font-weight: 800;
-	color: #fff;
-	font-size: rem(36);
-	white-space: nowrap;
-	@media (max-width: 576px) {
-		font-size: 28px;
-		margin-bottom: 0;
-	}
+  font-weight: 800;
+  color: #fff;
+  font-size: rem(36);
+  white-space: nowrap;
 
-	@media (max-width: 576px) {
-		font-size: rem(24);
-	}
+  @media (max-width: 576px) {
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 576px) {
+    font-size: rem(24);
+  }
 }
 
 /* Swiper global styles */
 .swiper-container {
-	margin-top: em(5);
-	margin-bottom: em(19.2);
+  margin-top: em(5);
+  margin-bottom: em(19.2);
 
-	.swiper-wrapper {
-		box-sizing: border-box;
-		width: 100%;
+  .swiper-wrapper {
+    box-sizing: border-box;
+    width: 100%;
 
-		.different-photo {
-			background-size: cover;
-		}
+    .different-photo {
+      background-size: cover;
+    }
 
-		.nav-blur {
-			backdrop-filter: blur(25px);
-			-webkit-backdrop-filter: blur(25px);
-		}
-	}
-	.hover-wrapper {
-		transition: all 0.3s ease-in-out;
-	}
-	.swiper-slide {
-		transition: none !important;
-		cursor: pointer;
-		transition: all 0.3s ease-in-out;
-		// removed per HC request
-		// &:hover .hover-wrapper {
-		//   // transition: all 0.3s ease-in-out;
-		//   // margin-top: -20px;
-		// }
+    .nav-blur {
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+    }
+  }
 
-		background-size: cover;
-		background-position-y: bottom;
+  .hover-wrapper {
+    transition: all 0.3s ease-in-out;
+  }
 
-		border-radius: 20px;
-		position: relative;
-		// Extra Small devices (landscape phones, 576px and up)
-		@media (max-width: 576px) {
-			a {
-				text-decoration: none;
-			}
-			section {
-				color: #fff;
-				text-decoration: none;
-				padding-left: 19px;
-				.swipe-event {
-					font-size: 18px;
-				}
-				.swipe-artist {
-					font-size: 14px;
-					font-weight: 400;
-				}
-			}
-		}
+  .swiper-slide {
+    transition: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    // removed per HC request
+    // &:hover .hover-wrapper {
+    //   // transition: all 0.3s ease-in-out;
+    //   // margin-top: -20px;
+    // }
 
-		.artist-img {
-			border-radius: 10px;
-			width: 100%;
-		}
+    background-size: cover;
+    background-position-y: bottom;
 
-		.event {
-			font-size: em(18);
-			margin: 20px 0 5px 0;
-			font-weight: 700;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			width: inherit;
-		}
-		.artist {
-			font-weight: 600;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			width: inherit;
-		}
+    border-radius: 20px;
+    position: relative;
 
-		//   ****removed per HC request****
-		// .btn-wrapper {
-		//   opacity: 0;
-		//   position: absolute;
-		//   top: 0;
-		//   width: 100%;
-		//   height: 102%;
-		//   border-radius: 10px;
-		//   // background-color: grey;
-		//   background-color: rgba(0,0,0,0.6);
-		//   transition: all 0.3s ease-in-out;
-		//   &:hover {
-		//     // transition: all 0.3s ease-in-out;
-		//     opacity: 1;
-		//   }
-		//   .slide-btn {
-		//     font-size: 12px;
-		//     border-radius: 8px;
-		//     border: 2px solid #ffdc4e;
-		//     width: 111px;
-		//     height: 41px;
-		//     margin-bottom: 10px;
-		//     &:active {
-		//       background-color: #ffcc00;
-		//     }
-		//   }
-		//   .btn-sos-main {
-		//     background-color: #FFDC4E;
-		//   }
-		//   .btn-sos-secondary {
-		//     color: white;
-		//     background-color: #20212B;
-		//     &:hover {
-		//       background-color: #ffdc4e;
-		//       color: black;
-		//       &:active {
-		//         background-color: #ffcc00;
-		//       }
-		//     }
-		//   }
-		// }
-	}
+    // Extra Small devices (landscape phones, 576px and up)
+    @media (max-width: 576px) {
+      a {
+        text-decoration: none;
+      }
+
+      section {
+        color: #fff;
+        text-decoration: none;
+        padding-left: 19px;
+
+        .swipe-event {
+          font-size: 18px;
+        }
+
+        .swipe-artist {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .artist-img {
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .event {
+      font-size: em(18);
+      margin: 20px 0 5px 0;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: inherit;
+    }
+
+    .artist {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: inherit;
+    }
+
+    //   ****removed per HC request****
+    // .btn-wrapper {
+    //   opacity: 0;
+    //   position: absolute;
+    //   top: 0;
+    //   width: 100%;
+    //   height: 102%;
+    //   border-radius: 10px;
+    //   // background-color: grey;
+    //   background-color: rgba(0,0,0,0.6);
+    //   transition: all 0.3s ease-in-out;
+    //   &:hover {
+    //     // transition: all 0.3s ease-in-out;
+    //     opacity: 1;
+    //   }
+    //   .slide-btn {
+    //     font-size: 12px;
+    //     border-radius: 8px;
+    //     border: 2px solid #ffdc4e;
+    //     width: 111px;
+    //     height: 41px;
+    //     margin-bottom: 10px;
+    //     &:active {
+    //       background-color: #ffcc00;
+    //     }
+    //   }
+    //   .btn-sos-main {
+    //     background-color: #FFDC4E;
+    //   }
+    //   .btn-sos-secondary {
+    //     color: white;
+    //     background-color: #20212B;
+    //     &:hover {
+    //       background-color: #ffdc4e;
+    //       color: black;
+    //       &:active {
+    //         background-color: #ffcc00;
+    //       }
+    //     }
+    //   }
+    // }
+  }
 }
 
 .profile-category-max-width {
-	max-width: 630px;
-	@media (max-width: 1200px) {
-		max-width: 540px;
-	}
-	@media (max-width: 992px) {
-		max-width: 610px;
-	}
-	@media (max-width: 768px) {
-		max-width: 696px;
-	}
+  max-width: 630px;
+
+  @media (max-width: 1200px) {
+    max-width: 540px;
+  }
+
+  @media (max-width: 992px) {
+    max-width: 610px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 696px;
+  }
 }
+
 .show-pay-btn {
-	background: linear-gradient(105deg, #ffd83b, #ffa43b);
-	color: #000;
-	text-transform: uppercase;
+  background: linear-gradient(105deg, #ffd83b, #ffa43b);
+  color: #000;
+  text-transform: uppercase;
 }
 
 @import "bootstrap";

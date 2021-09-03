@@ -42,6 +42,7 @@ export class PurchaseShowComponent implements OnInit {
     this.getFloatRates();
     this.getEvent();
     this.end = 2;
+    this.helpers.toTop()
   }
 
   setBG() {

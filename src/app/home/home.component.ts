@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 	public isBrowser: boolean;
 	public loading = true;
 	public contentLoaded = false;
+	public watchNow: any;
 
 	config: SwiperOptions = {
 		pagination: { el: '.swiper-pagination', clickable: true },
@@ -114,7 +115,7 @@ export class HomeComponent implements OnInit {
 		private api: ApiService,
 		private helpers: HelpersService,
 		private renderer2: Renderer2
-	) {}
+	) { }
 
 	@HostListener('window:scroll')
 	onScroll(e: Event): void {
@@ -152,6 +153,10 @@ export class HomeComponent implements OnInit {
 		}
 	}
 
+	goToEvent(event) {
+		console.log(event)
+	}
+
 	setMobileView() {
 		const chartsList = document.getElementById('charts-list');
 		chartsList.classList.add('list-group-horizontal');
@@ -172,7 +177,7 @@ export class HomeComponent implements OnInit {
 				(this.premieres = data
 					.filter((event) => event.status !== 'completed')
 					.sort((a, b) => new Date(b.start).getTime() + new Date(a.start).getTime()));
-			this.mostPopular = data
+			this.watchNow = data
 				.filter((event) => event.status === 'completed' || event.status === 'live')
 				.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
 			this.event = this.events[0];
