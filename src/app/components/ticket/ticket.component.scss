@@ -1,82 +1,164 @@
 .ticket {
-  background-color: #363f4c;
+  background-color: #2a2f3b;
   border-radius: 11px;
   opacity: 1;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  padding: 20px;
-  margin-bottom: 30px;
-
+  padding: 24px;
+  margin-bottom: 38px;
+  ul .li-spacing {
+    position: relative;
+    left: -4px;
+  }
   .fa-circle {
-    color: #FFDC4E;
+    color: #ffdc4e;
   }
-
-  .form-select {
-    color: #fff;
-    background-color: #131519;
-    border: 1px solid #788995;
-    border-radius: 10px;
-  }
-
-  .ticket-description {
-    color: #B0B9D3;
-    font-size: 16px;
-  }
-
-  .ticket-type {
-    color: #FFFFFF;
+  .access-title {
+    margin-bottom: 7px;
     font-size: 22px;
     font-weight: 700;
   }
+  .access-cost {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+}
+.form-select {
+  color: #fff;
+  background-color: #131519;
+  border: 1px solid #788995;
+  border-radius: 10px;
+}
 
-  .vip-text {
-    color: #B0B9D3;
-    font-size: 15px;
-    font-weight: 600;
-    margin-top: 28px;
-    margin-bottom: 28px;
+.ticket-description {
+  color: #b0b9d3;
+  font-size: 16px;
+  font-weight: 500;
+
+  li {
+    color: white;
+    margin-bottom: 15px;
+    margin-left: -4px;
+    font-weight: 700;
+  }
+  .light-text {
+    color: #b0b9d3;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.ticket-type {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.vip-text {
+  color: #b0b9d3;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.vip-row {
+  padding-left: 10%;
+}
+
+.card {
+  max-width: 48%;
+  height: 150px;
+  background-color: #1c2233;
+  border-radius: 10px;
+  padding: 20px;
+  border: none;
+  margin-right: 10px;
+
+  .item-name {
+    width: 120px;
   }
 
-  .vip-row {
-    padding-left: 10%;
-  }
-
-  .card {
-    max-width: 48%;
-    height: 150px;
-    background-color: #1C2233;
+  img {
+    width: 109px;
+    height: 109px;
+    background-color: #fff;
     border-radius: 10px;
-    padding: 20px;
-    border: none;
-    margin-right: 10px;
+    margin-left: 10px;
+  }
 
-    .item-name {
-      width: 120px;
+  .size-section {
+    width: 32%;
+
+    p {
+      margin-bottom: 0;
     }
 
-    img {
-      width: 109px;
-      height: 109px;
-      background-color: #fff;
-      border-radius: 10px;
-      margin-left: 10px;
+    .form-select {
+      border: none;
+      background-color: #393c4d;
     }
 
-    .size-section {
-      width: 32%;
-
-      p {
-        margin-bottom: 0;
+    .size {
+      vertical-align: bottom;
+    }
+  }
+}
+.add-on-wrapper {
+  .title {
+    font-family: "DrukWide", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.54px;
+    margin-bottom: 10px;
+  }
+  .add-on-cost {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  ul {
+    padding-left: 20px;
+    li {
+      font-weight: 700;
+      span {
+        position: relative;
+        left: -4px;
       }
-
-      .form-select {
-        border: none;
-        background-color: #393C4D;
-      }
-
-      .size {
-        vertical-align: bottom;
-      }
+    }
+  }
+  .description-wrapper {
+    margin-bottom: 18px;
+    .description-title {
+      font-size: 22px;
+      font-weight: 800;
+      display: block;
+      max-width: 80%;
+    }
+    .description-list {
+      margin-bottom: 25px;
+    }
+  }
+}
+.form-switch {
+  margin-bottom: 20px;
+  .form-check-input {
+    &:active,
+    &:focus {
+      border: none;
+    }
+    transition: 0ms;
+    width: 48px;
+    height: 27px;
+    background-color: #6e6f77;
+    background-image: url("../../../images/icons/ticketSwitch--off.svg");
+    background-size: 22px;
+    background-position: 3px 1.5px;
+    &:checked {
+      background-image: url("../../../images/icons/ticketSwitch--on.svg");
+      background-color: #ffdc4e;
+      background-position: 16px -5px;
+      background-size: 36px;
     }
   }
 }
