@@ -1,10 +1,10 @@
 <div class="profile mx-auto max-width-wrapper">
-	<div class="row flex-direction-wrapper justify-content-between profile-wrapper">
-		<div class="col-md-2">
+	<div class="row justify-content-between">
+		<div class="col-md-3">
 			<div class="d-flex">
 				<div class="menu text-nowrap px-0">
 					<h1 class="section-title heading" id="my-profile-heading">My Profile</h1>
-					<ul class="list-group pl-0">
+					<ul class="list-group pl-0 d-none d-lg-block">
 						<li id="personal-details" class="list-group-item"><a
 								routerLink="/account/profile/personal-details"
 								routerLinkActive="profile-link-active">Personal Details</a></li>
@@ -13,8 +13,6 @@
 						<li id="invoices" class="list-group-item"><a routerLink="/account/profile/invoices"
 								routerLinkActive="profile-link-active">Invoices</a>
 						</li>
-						<li id="shipping-address" class="list-group-item"><a routerLink="/account/profile/address"
-								routerLinkActive="profile-link-active">Shipping Address</a></li>
 						<li id="newsletter" class="list-group-item newsletter-link">
 							<a routerLink="/account/profile/newsletter"
 								routerLinkActive="profile-link-active">Newsletter</a>
@@ -23,8 +21,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9 mx-0 ms-0 card-group--tablet-bp">
-			<router-outlet></router-outlet>
+		<div class="col-lg-9 mx-0 ms-0">
+			<router-outlet (activate)="onActivate($event)"></router-outlet>
 		</div>
 	</div>
 </div>

@@ -9,6 +9,11 @@ nav {
 	font-weight: 600;
 	text-transform: uppercase;
 
+	&.nav-blur {
+		backdrop-filter: blur(25px);
+		-webkit-backdrop-filter: blur(25px);
+	}
+
 	.avatar {
 		border-radius: 50%;
 		height: 47px;
