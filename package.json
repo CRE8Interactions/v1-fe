@@ -25,6 +25,7 @@
     "@angular/platform-server": "~11.2.13",
     "@angular/router": "~11.2.13",
     "@nguniversal/express-engine": "^11.2.1",
+    "@stripe/stripe-js": "^1.17.1",
     "@types/cleave.js": "^1.4.4",
     "bootstrap": "^5.0.0",
     "domino": "^2.1.6",

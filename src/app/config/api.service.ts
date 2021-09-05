@@ -25,8 +25,8 @@ export class ApiService {
     return this.http.get(`${this.url}/events/`);
   }
 
-  getMyEvents(ids) {
-    return this.http.post(`${this.url}/events/my-events`, ids);
+  getMyEvents() {
+    return this.http.get(`${this.url}/orders/my-orders`);
   }
 
   getEvent(slug) {
@@ -86,7 +86,7 @@ export class ApiService {
   }
 
   getIntent(amount) {
-    return this.http.post(`${this.url}/intention/${amount}`, {amount})
+    return this.http.post(`${this.url}/intention/${amount}`, { amount })
   }
 
   getCharting() {
@@ -94,16 +94,16 @@ export class ApiService {
   }
 
   completeOrder(order, message) {
-    return this.http.post(`${this.url}/orders/complete/${order.order_uuid}`, {message})
+    return this.http.post(`${this.url}/orders/complete/${order.order_uuid}`, { message })
   }
 
   failedOrder(order, message) {
-    return this.http.post(`${this.url}/orders/failed/${order.order_uuid}`, {message})
+    return this.http.post(`${this.url}/orders/failed/${order.order_uuid}`, { message })
   }
 
 
   createNotification(email) {
-    return this.http.post(`${this.url}/orders/`, {email})
+    return this.http.post(`${this.url}/orders/`, { email })
   }
 
   checkEmail(email) {
@@ -133,5 +133,12 @@ export class ApiService {
   myOrders() {
     return this.http.get(`${this.url}/orders/my-orders`);
   }
-  
+
+  pay(data) {
+    return this.http.post(`${this.url}/pays`, data)
+  }
+
+  getClientSecret(data) {
+    return this.http.post(`${this.url}/pays/walletIntent`, data)
+  }
 }

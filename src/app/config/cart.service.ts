@@ -4,20 +4,58 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  public cart: any;
-  private cartTotals: number;
-  private ticket: any;
-  public totalDue: number;
+  private ticketPrice: any;
+  private meetGreetPrice: any;
   public serviceFee: number;
+  public totalDue: number;
   public subTotal: number;
-  public details: any;
-  public shippingFee: number;
-  public totalItems: number;
-  public hasVip: boolean;
+  public ticket: any;
+  public event: any;
 
-  constructor() { }
+  constructor() {
+    this.clearCart()
+  }
 
   setTicket(ticket) {
-    console.log(ticket)
+    sessionStorage.setItem('ticket', JSON.stringify(ticket))
+    this.getTotals()
+  }
+
+  addMeetGreet(event) {
+    sessionStorage.setItem('event', JSON.stringify(event))
+    this.getTotals()
+  }
+
+  removeMeetGreet(event) {
+    sessionStorage.removeItem('event')
+    this.getTotals()
+  }
+
+  clearCart() {
+    sessionStorage.removeItem('ticket')
+    sessionStorage.removeItem('event')
+  }
+
+  getTotals() {
+    let ticket = sessionStorage.getItem('ticket')
+    if (ticket) {
+      ticket = JSON.parse(ticket)
+      this.ticket = ticket
+    }
+    this.ticketPrice = ticket['price']
+    let meetGreet = sessionStorage.getItem('event')
+    if (meetGreet) meetGreet = JSON.parse(meetGreet)
+    if (meetGreet) {
+      this.meetGreetPrice = meetGreet['meetGreetPrice']
+      this.event = meetGreet;
+    } else {
+      this.meetGreetPrice = 0
+      this.event = '';
+    }
+    this.serviceFee = (this.meetGreetPrice + this.ticketPrice) * .10
+    this.totalDue = this.ticketPrice + this.serviceFee + this.meetGreetPrice
+    this.subTotal = this.meetGreetPrice + this.ticketPrice
+    sessionStorage.setItem('cart', JSON.stringify(this))
+    return this
   }
 }

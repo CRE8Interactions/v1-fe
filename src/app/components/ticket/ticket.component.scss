@@ -6,24 +6,29 @@
   -webkit-backdrop-filter: blur(30px);
   padding: 24px;
   margin-bottom: 38px;
+
   ul .li-spacing {
     position: relative;
     left: -4px;
   }
+
   .fa-circle {
     color: #ffdc4e;
   }
+
   .access-title {
     margin-bottom: 7px;
     font-size: 22px;
     font-weight: 700;
   }
+
   .access-cost {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 10px;
   }
 }
+
 .form-select {
   color: #fff;
   background-color: #131519;
@@ -42,6 +47,7 @@
     margin-left: -4px;
     font-weight: 700;
   }
+
   .light-text {
     color: #b0b9d3;
     font-size: 14px;
@@ -105,6 +111,7 @@
     }
   }
 }
+
 .add-on-wrapper {
   .title {
     font-family: "DrukWide", sans-serif;
@@ -113,40 +120,51 @@
     letter-spacing: 0.54px;
     margin-bottom: 10px;
   }
+
   .add-on-cost {
     font-size: 20px;
     font-weight: 700;
   }
+
   ul {
     padding-left: 20px;
+
     li {
       font-weight: 700;
+
       span {
         position: relative;
         left: -4px;
       }
     }
   }
+
   .description-wrapper {
     margin-bottom: 18px;
+
     .description-title {
       font-size: 22px;
       font-weight: 800;
       display: block;
       max-width: 80%;
     }
+
     .description-list {
       margin-bottom: 25px;
     }
   }
 }
+
 .form-switch {
   margin-bottom: 20px;
+
   .form-check-input {
+
     &:active,
     &:focus {
       border: none;
     }
+
     transition: 0ms;
     width: 48px;
     height: 27px;
@@ -154,6 +172,7 @@
     background-image: url("../../../images/icons/ticketSwitch--off.svg");
     background-size: 22px;
     background-position: 3px 1.5px;
+
     &:checked {
       background-image: url("../../../images/icons/ticketSwitch--on.svg");
       background-color: #ffdc4e;
