@@ -4,27 +4,34 @@
     url("../../assets/fonts/DrukWide-Bold.woff2") format("woff2"),
     url("../../assets/fonts/DrukWide-Bold_1.ttf") format("truetype");
 }
+
 .modal-dialog {
   max-width: 552px;
   margin-top: 140px;
 }
+
 ul .li-spacing {
   position: relative;
-      left: -4px;
+  left: -4px;
 }
+
 .modal.fade .modal-dialog {
   transform: none;
   transition: 0s;
 }
+
 .show-more-btn {
   width: min-content;
   display: inline;
   // margin-left: -30px;
   // background: transparent linear-gradient(90deg, #151A2700 -30%, #1B1D2B 70%) 0% 0% no-repeat padding-box;;
 }
-#purchaseModal, #showMore {
+
+#purchaseModal,
+#showMore {
   background-color: rgba(0, 0, 0, 0.6);
 }
+
 .more-close-btn {
   position: relative;
   top: -60px;
@@ -32,22 +39,25 @@ ul .li-spacing {
   width: 65px;
   height: 25px;
 }
+
 .show-more-modal {
-  
+
   .modal-title {
     font-size: 24px;
     font-family: inherit;
     font-weight: 800;
     margin-top: 0;
     margin-bottom: 0;
-    
+
   }
+
   .modal-body {
     font-weight: 500;
     margin-top: -10px;
     margin-bottom: 7px;
   }
 }
+
 .promo-btn {
   height: 51px;
   width: 106px;
@@ -55,26 +65,29 @@ ul .li-spacing {
   font-size: 14px;
   border: none;
 }
+
 .dotted-line {
-  background-image: linear-gradient(
-    to right,
-    #768196 25%,
-    rgba(255, 255, 255, 0) 0%
-  );
+  background-image: linear-gradient(to right,
+      #768196 25%,
+      rgba(255, 255, 255, 0) 0%);
+
   .sub-line {
     margin-top: 20px;
   }
+
   background-position: left;
   background-size: 7px 1px;
   background-repeat: repeat-x;
   height: 1px;
   margin: 23px 0;
 }
+
 .currency {
   margin-bottom: 40px;
   justify-content: space-between;
   font-weight: 700;
   padding-left: 0;
+
   label {
     font-size: 14px;
     font-weight: 700;
@@ -82,15 +95,18 @@ ul .li-spacing {
     padding-left: 0;
   }
 }
+
 .promo-wrapper {
   margin-bottom: 35px;
+
   input[type=checkbox] {
     width: 20.5px;
     height: 20.5px;
     border-radius: 5px;
     border: 1.5px solid #ffdc4e;
     background-color: transparent;
-    margin: 0 11px 0 0; 
+    margin: 0 11px 0 0;
+
     &:checked {
       background-color: #ffdc4e;
       background-image: url('../../images/icons/checkBlack.svg');
@@ -99,50 +115,62 @@ ul .li-spacing {
       background-position: center;
     }
   }
+
   .checkbox-text {
     font-weight: 14px;
     font-weight: 600;
   }
+
   .promo-field-wrapper {
     margin-top: 20px;
   }
 }
+
 #cardName {
   margin-bottom: 25px;
 }
+
 .subtotals-wrapper {
   .subtotal-row {
     margin-bottom: 9px;
+
     .item-title {
       color: #B0B9D3;
     }
+
     .item-total {
       font-size: 18px;
       color: white;
       font-weight: 700;
     }
+
     .item-cost {
       font-weight: 600;
     }
   }
+
   .total-text {
     font-weight: 700;
     font-size: 22px;
   }
+
   .total-subtext {
     font-size: 10px;
     font-weight: 400;
     margin: -18px 0 -10px 0;
   }
 }
+
 .privacy-wrapper {
   margin-top: 30px;
+
   .body-subtitle {
     font-size: 18px;
     font-weight: 600;
     color: white;
     margin-bottom: 9px;
   }
+
   p {
     color: #B0B9D3;
     font-size: 13px;
@@ -150,6 +178,7 @@ ul .li-spacing {
     margin-bottom: 0;
   }
 }
+
 .show-pay-btn {
   height: 51px;
   margin-bottom: 10px;
@@ -159,6 +188,7 @@ ul .li-spacing {
 .purchase-show {
   padding-top: 53px;
   padding-bottom: 80px;
+
   @media (max-width: 768px) {
     text-align: center;
   }
@@ -209,6 +239,7 @@ ul .li-spacing {
       border-radius: 10px;
       margin-top: 10px;
       margin-right: 31px;
+
       @media (max-width: 768px) {
         margin-right: 0;
       }
@@ -216,6 +247,7 @@ ul .li-spacing {
 
     .share {
       margin-top: 20px;
+
       @media (max-width: 768px) {
         justify-content: center;
       }
@@ -310,10 +342,12 @@ ul .li-spacing {
 
 .modal-body {
   padding: 0 37px;
+
   @media (max-width: 575px) {
     padding-left: 20px;
     padding-right: 20px;
   }
+
   .form-select {
     width: 380px;
     height: 40px;
@@ -323,10 +357,12 @@ ul .li-spacing {
     border: 0;
     background-image: url('../../images/icons/dropdownArrow.svg');
     background-size: 13px 6px;
+
     @media (max-width: 575px) {
       width: 60%;
     }
   }
+
   .body-title {
     font-size: 32px;
     font-weight: 800;
@@ -348,6 +384,7 @@ ul .li-spacing {
 
 .modal-button-footer {
   padding: 30px;
+
   @media (max-width: 575px) {
     padding-left: 20px;
     padding-right: 20px;
@@ -357,10 +394,12 @@ ul .li-spacing {
 .modal-header {
   border-bottom: none;
   padding: 18px 38px 18px 38px;
+
   @media (max-width: 575px) {
     padding-left: 20px;
     padding-right: 20px;
   }
+
   .btn {
     font-size: 12px;
     color: #b0b9d3;
@@ -378,30 +417,55 @@ ul .li-spacing {
   margin-bottom: 18px;
   font-family: "DrukWide", sans-serif;
   letter-spacing: 0.96px;
+
   @media (max-width: 575px) {
     font-size: 28px;
   }
 }
+
 .payment-title {
   margin-bottom: 32px;
   margin-top: 32px;
 }
+
+.success-img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 161px;
+  height: 161px;
+  display: block;
+}
+
+.error-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.success-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .show-apple-btn {
   background-color: #000;
   color: #fff;
   height: 51px;
   margin-bottom: 12px;
   font-weight: 700;
+
   span {
     margin-left: 12px;
   }
 }
+
 .modal-label {
   font-size: 18px;
   font-weight: 600;
 }
+
 input {
   background-color: #2e303d;
+
   &[type="text"],
   &[type="tel"] {
     color: #fff;
@@ -410,11 +474,13 @@ input {
     margin-bottom: 8px;
     border-radius: 6px;
     border: 0;
+
     &:focus {
       background-color: #2e303d;
     }
   }
 }
+
 .sub-line {
   margin-top: 18px;
 }
@@ -423,28 +489,59 @@ input {
   max-width: 1535px !important;
   padding-left: 0;
   padding-right: 0;
+
   @media (max-width: 14400px) {
     padding-left: 47px;
     padding-right: 47px;
   }
+
   @media (max-width: 1200px) {
     padding-left: 17px;
     padding-right: 17px;
   }
+
   @media (max-width: 992px) {
     padding-left: 5px;
     padding-right: 5px;
   }
+
   @media (max-width: 576px) {
     padding-left: 15px;
     padding-right: 15px;
   }
+
   @media (max-width: 500px) {
     padding-left: 0;
     padding-right: 0;
   }
+
   // @media (max-width: 500px) {
   //   padding-left: 10px;
   //   padding-right: 10px;
   // }
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #ffdc4e;
+  /* Blue */
+  border-radius: 50%;
+  width: 161px;
+  height: 161px;
+  animation: spin 2s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 40px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

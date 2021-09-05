@@ -1,25 +1,6 @@
 <div class="my-shows max-width-wrapper mx-auto">
 	<div class="section-heading">
 		<h4 class="section-title">My Shows</h4>
-		<!-- <div class=" col-6 row align-items-center shows-row"> -->
-		<!-- *****************************************************  ***** -->
-		<!-- <div class="col-12 d-flex justify-content-end">
-				<div class="swiper-button-container d-flex align-items-center justify-content-center">
-					<div class="swiper-button-prev1 swiper-button-left-wrapper">
-						<button type="button" class="btn btn-left px-0">
-							<img src="../../images/icons/swiper-prev.svg" alt="previous" class="swiper-arrow-prev">
-						</button>
-					</div>
-					<div class="swiper-button-next1 swiper-button-right-wrapper">
-						<button type="button" class="btn btn-right px-0">
-							<img src="../../images/icons/swiper-next.svg" alt="next" class="swiper-arrow-next"
-								width="6px" height="9px">
-						</button>
-					</div>
-				</div>
-			</div> -->
-		<!-- ************************* begin swiper container ***  ******* -->
-		<!-- </div> -->
 	</div>
 
 
@@ -29,125 +10,21 @@
 		<div class="swiper-container mx-0">
 			<swiper [config]="config" class="h-100">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
+					<div class="swiper-slide" *ngFor="let event of events">
 						<div class="hover-wrapper">
 							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
+								<img [src]="event?.event?.background_image?.url" alt="image" class="artist-img" routerLink="/">
 								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
                             <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
                             <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
                         </div> -->
 							</div>
 							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
+								<div class="event alt-color">{{ event.event.name }}</div>
 								<div class="artist">Artist Name</div>
 							</div>
 						</div>
 					</div>
-					<!-- **********spacer******* -->
-					<div class="swiper-slide">
-						<div class="hover-wrapper">
-							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
-								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
-                            <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
-                        </div> -->
-							</div>
-							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
-								<div class="artist">Artist Name</div>
-							</div>
-						</div>
-					</div>
-					<!-- **********spacer******* -->
-					<div class="swiper-slide">
-						<div class="hover-wrapper">
-							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
-								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
-                            <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
-                        </div> -->
-							</div>
-							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
-								<div class="artist">Artist Name</div>
-							</div>
-						</div>
-					</div>
-					<!-- **********spacer******* -->
-					<div class="swiper-slide">
-						<div class="hover-wrapper">
-							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
-								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
-                            <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
-                        </div> -->
-							</div>
-							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
-								<div class="artist">Artist Name</div>
-							</div>
-						</div>
-					</div>
-					<!-- **********spacer******* -->
-					<div class="swiper-slide">
-						<div class="hover-wrapper">
-							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
-								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
-                            <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
-                        </div> -->
-							</div>
-							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
-								<div class="artist">Artist Name</div>
-							</div>
-						</div>
-					</div>
-					<!-- **********spacer******* -->
-					<div class="swiper-slide">
-						<div class="hover-wrapper">
-							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
-								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
-                            <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
-                        </div> -->
-							</div>
-							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
-								<div class="artist">Artist Name</div>
-							</div>
-						</div>
-					</div>
-					<!-- **********spacer******* -->
-					<div class="swiper-slide">
-						<div class="hover-wrapper">
-							<div class="image-wrapper">
-								<img src="https://picsum.photos/225" alt="image" class="artist-img" routerLink="/">
-								<!-- <div class="btn-wrapper d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="btn slide-btn btn-sos-main">Get Tickets</button>
-                            <button type="button" class="btn slide-btn btn-sos-secondary">Preview</button>
-                        </div> -->
-							</div>
-							<div class="card-details">
-								<div class="event alt-color">Event Name</div>
-								<div class="artist">Artist Name</div>
-							</div>
-						</div>
-					</div>
-					<!-- **********spacer******* -->
-
-
-
-
-
-
-
 				</div>
 			</swiper>
 		</div>

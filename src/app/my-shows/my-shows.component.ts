@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HelpersService } from '../config/helpers.service';
+import { ApiService } from '../config/api.service';
 import { Autoplay, SwiperOptions } from 'swiper';
 
 @Component({
@@ -11,21 +12,6 @@ import { Autoplay, SwiperOptions } from 'swiper';
 })
 export class MyShowsComponent implements OnInit {
 	public events: any;
-	public event: any;
-	public premieres: any;
-	public mostPopular: any;
-	public main: any;
-	public backgroundImage: any;
-	public featuredEvent: any;
-	public featuredImage: any;
-	public performers: any;
-	public genres: any;
-	public charting: any;
-	public eventTruncate: number;
-	public nameTruncate: number;
-	public isBrowser: boolean;
-	public loading = true;
-	public contentLoaded = false;
 
 	config: SwiperOptions = {
 		pagination: { el: '.swiper-pagination', clickable: true },
@@ -73,7 +59,18 @@ export class MyShowsComponent implements OnInit {
 		}
 	};
 
-	constructor() {}
+	constructor(
+		private api: ApiService
+	) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.getShows()
+	}
+
+	getShows() {
+		this.api.getMyEvents().subscribe(data => {
+			this.events = data;
+			console.log(data)
+		})
+	}
 }

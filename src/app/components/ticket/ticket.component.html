@@ -1,56 +1,22 @@
 <div class="row ticket mx-0 gx-0">
     <div class="col-12">
         <p class="access-title alt-color">Stream Access</p>
-        <p class="col-12 access-cost">$ 15.00</p>
+        <p class="col-12 access-cost">{{ ticket?.price | currency: 'USD'}}</p>
         <ul class="ticket-description mb-0">
-            <li class="description-item"> <span class="li-spacing"> Get access to show for <span class="description-cost">$ 15.00 </span> </span> <span class="light-text"> (plus tax and service fee where applicable)</span></li>
+            <li class="description-item"> <span class="li-spacing"> Get access to show for <span class="description-cost">{{ ticket?.price | currency: 'USD'}} </span> </span> <span class="light-text"> (plus tax and service fee where applicable)</span></li>
             <li class="description-item mb-0"> <span class="li-spacing"> Watch as many times as you want</span></li>
         </ul>
     </div>
-    
-    <!-- <div class="row ticket" *ngFor="let ticket of ticketOptions"> -->
-    <!-- <div class="col-12">
-        <p class="ticket-type alt-color">{{ ticketName(ticket.type) }}</p>
-        <p class="col-12">{{ ticket?.price | currency }}</p>
-        <ul class="ticket-description">
-            <li class="description-item">Get access to show for $ 15.00 <span class="light-text">(plus tax and service where applicable)</span></li>
-            <li class="description-item">Watch as many times as you want</li>
-        </ul>
-        <p class="ticket-description">{{ ticket?.description }}</p> -->
 </div>
-<div class="add-on-wrapper">
+<div class="add-on-wrapper" *ngIf="event?.meetGreet">
     <p class="title">Add on</p>
     <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (change)="setMeetGreet($event)">
       </div>
     <div class="add-on-description">
-        <div class="description-wrapper d-flex align-items-center justify-content-between"><span class="description-title">Meet & Greet</span><span class="add-on-cost float-end">$ 45.00</span></div>
+        <div class="description-wrapper d-flex align-items-center justify-content-between"><span class="description-title">Meet & Greet</span><span class="add-on-cost float-end">{{ event?.meetGreetPrice | currency: 'USD'}}</span></div>
         <ul class="description-list">
             <li class="add-on-item"> <span> Private one on one video call with artist</span></li>
         </ul>
     </div>
 </div>
-<!-- <div class="col-md-3 col-sm-2">
-        <p class="float-end">{{ ticket?.price | currency }}</p>
-    </div> -->
-<!-- <div class="col-12 p-0" *ngIf="ticket.type === 'vip'">
-        <div class="row vip-row">
-            <div class="card" *ngFor="let item of vipItems">
-                <div class="row">
-                    <img [src]="item?.image?.formats?.small.url" class="float-start image">
-                    <span class="size-section">
-                        <p class="float-start item-name">{{ item.name }}</p>
-                        <p class="size">size</p>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected></option>
-                            <option value="small">S</option>
-                            <option value="medium">M</option>
-                            <option value="large">L</option>
-                            <option value="xlarge">XL</option>
-                          </select>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- </div> -->
