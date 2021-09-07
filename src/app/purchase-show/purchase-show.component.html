@@ -1,4 +1,4 @@
-<div class="purchase-show container sc-max-width-wrapper mx-auto">
+<div class="purchase-show max-width-wrapper mx-auto">
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="artist-info">
@@ -7,50 +7,181 @@
                     <h3 class="artist-name">{{ event?.performers[0]?.name }}</h3>
                     <p class="event-title">{{ event?.name }}</p>
                     <div class="row">
-                        <div class="event-start">
-                            {{ streamingDate(event) }}
+                        <div class="event-start-wrapper">
+                            <div class="event-start">
+                                <p class="event-date">Coming to Salticorn on
+                                    <br class="d-block d-sm-none">
+                                    <span class="alt-color">05 September
+                                        2021</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <section class="share">
-                        <!--
-                            <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#previewModal" (click)="openPreview(1)"><img src="../../images/icons/play-circle-outline.svg" alt="play"> Preview</button>
-                        <button type="button" class="btn btn-share" data-bs-toggle="modal" data-bs-target="#shareModal"><img src="../images/icons/share.svg" alt="share"> Share</button>
-                        -->
-                        <button type="button" class="btn btn-purchase" data-bs-toggle="modal" data-bs-target="#purchaseModal"> Purchase</button>
-                        <button type="button" class="btn btn-preview" data-bs-toggle="modal" data-bs-target="#shareModal"><i class="far fa-play-circle fa-2x"></i> <span class="preview-btn-text">Preview</span></button>
+                    <section class="share d-flex align-items-center">
+                        <button type="button" class="btn btn-purchase" data-bs-toggle="modal"
+                            data-bs-target="#purchaseModal"> Purchase</button>
+                        <button type="button" class="btn btn-preview d-flex align-items-center" data-bs-toggle="modal"
+                            data-bs-target="#shareModal"><i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+                                    <g id="Group_2581" data-name="Group 2581" transform="translate(12339 6907)">
+                                        <path id="Path_1564" data-name="Path 1564"
+                                            d="M26.091,19.568,11.774,27.875A1.842,1.842,0,0,1,9,26.307V9.693a1.841,1.841,0,0,1,2.774-1.566l14.317,8.307a1.8,1.8,0,0,1,0,3.134Z"
+                                            transform="translate(-12327 -6896.875)" fill="#fff" />
+                                        <g id="Ellipse_102" data-name="Ellipse 102" transform="translate(-12339 -6907)"
+                                            fill="none" stroke="#62646b" stroke-width="2">
+                                            <circle cx="28" cy="28" r="28" stroke="none" />
+                                            <circle cx="28" cy="28" r="27" fill="none" />
+                                        </g>
+                                    </g>
+                                </svg>
+
+                            </i> <span class="preview-btn-text">Preview</span></button>
                     </section>
                 </div>
             </div>
             <div class="show-info">
                 <h3 class="title">Show Info</h3>
-                <p class="show-details"> {{ event?.summary }} </p>
+
+                <div class="show-details"> {{ event?.summary }} <div type="button" class="show-more-btn alt-color" data-bs-toggle="modal" data-bs-target="#showMore">
+                    more
+                </div> </div>
+                
+                <!-- Button trigger modal -->
+                
+
+                <!-- SHOW MORE Modal -->
+                <div class="modal fade" id="showMore" tabindex="-1" aria-labelledby="showMoreLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content show-more-modal">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="showMoreLabel">Show info</h5>
+                                <button type="button" class="btn more-close-btn" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, at. Ab, natus harum porro voluptatum iure nihil eaque. Suscipit architecto ipsam distinctio dignissimos dolore magnam modi nemo voluptatum similique eveniet. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--
-                <div class="get-ticket">
-                <h3 class="title">Get your ticket</h3>
-                <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
-            </div>
-            -->
         </div>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+<!-- Purchase Modal -->
+<div class="modal" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="purchaseModalLabel">Purchase</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content" *ngIf="paymentStatus === 'open'">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Purchase</h5>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+            <div class="modal-body">
+                <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
+                <p class="modal-title payment-title">Payment</p>
+                <p class="body-sub-title">Please enter your card information below</p>
+                <label for="cardName" class="modal-label col-12">Name on card
+                    <input type="text" class="form-control" id="cardName" [(ngModel)]="nameOnCard">
+                </label>
+
+                <div id="card-element">
+                    <!-- Elements will create input elements here -->
+                </div>
+                
+                <div class="dotted-line"></div>
+                <div class="row align-items-center justify-content-between currency col-12 mx-0">
+                    <label for="currency" class="modal-label">Currency</label>
+                    <select class="form-select " aria-label="Default" id="currency">
+                        <option selected>US dollar</option>
+                        <option *ngFor="let country of countries">{{ country.name }}</option>
+                    </select>
+                </div>
+                <div class="subtotals-wrapper">
+                    <div class="subtotal-row row">
+                        <span class="item-title col-6">Subtotal</span>
+                        <span class="item-cost col-6 text-end">{{ cart?.subTotal | currency: 'USD' }}</span>
+                    </div>
+                    <div class="subtotal-row row">
+                        <span class="item-title col-6">Service fee</span>
+                        <span class="item-cost col-6 text-end">{{ cart?.serviceFee | currency: 'USD' }}</span>
+                    </div>
+                    <div class="dotted-line sub-line"></div>
+                    <div class="total-wrapper">
+                        <div class="subtotal-row row">
+                            <span class="item-title item-total col-6">Total</span>
+                            <div class="item-cost col-6 text-end">
+                                <p class="total-text">{{ cart?.totalDue | currency: 'USD' }}</p>
+                                <p class="total-subtext">Price including Tax</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dotted-line"></div>
+                    <div class="privacy-wrapper">
+                        <p class="body-subtitle">Data & Privacy</p>
+                        <p>We do never intend to share your personal information with third parties. Your Data is secure
+                            with us and protected via Stripe</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 modal-button-footer">
+                <button class="btn show-pay-btn" type="button" (click)="pay()">Pay With Card</button>
+                <div id="payment-request-button"></div>
+            </div>
         </div>
-        <div class="modal-body">
-            <app-ticket [event]="event" [tickets]="event.tickets" *ngIf="event" class="tickets"></app-ticket>
-            <p class="body-title">Payment</p>
-            <p class="body-sub-title">Please confirm your payment details</p>
+        <!-- Successful Payment -->
+        <div class="modal-content" *ngIf="paymentStatus === 'success'">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Confirmed</h5>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+            <div class="modal-body">
+                <img src="../images/success.svg" class="success-img">
+                <p class="modal-title payment-title text-center">You've got it!</p>
+                <p class="success-text text-center">Your order was placed successfully.</p>
+                <p class="body-sub-title">Shows that you purchase live forever under My Shows. A live show will move to Library once streamed.</p>                
+                <div class="dotted-line"></div>
+                <div class="subtotals-wrapper">
+                    <div class="total-wrapper">
+                        <div class="subtotal-row row">
+                            <span class="item-title item-total col-6">Total Paid</span>
+                            <div class="item-cost col-6 text-end">
+                                <p class="total-text">{{ cart?.totalDue | currency: 'USD' }}</p>
+                                <p class="total-subtext">Price including Tax</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dotted-line"></div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 modal-button-footer">
+                <button class="btn show-pay-btn" type="button" routerLink="/account/my-shows" data-bs-dismiss="modal">GO TO MY SHOWS</button>
+            </div>
         </div>
-        <div class="d-grid gap-2 modal-button-footer">
-            <button class="btn show-pay-btn" type="button">Pay With Card</button>
+        <!-- Error Payment -->
+        <div class="modal-content" *ngIf="paymentStatus === 'error'">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Failed</h5>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+            <div class="modal-body">
+                <img src="../images/error.svg" class="success-img">
+                <p class="modal-title payment-title text-center">{{ errorMessage }}</p>
+                <p class="error-text" *ngIf="errorCode !== 208">We were unable to proceed with your payment. Please check your card details or try again later.</p>              
+            </div>
+            <div class="d-grid gap-2 modal-button-footer">
+                <button class="btn show-pay-btn" type="button" data-bs-dismiss="modal">RETURN TO CHECKOUT</button>
+            </div>
         </div>
-      </div>
+        <!-- Processing Payment -->
+        <div class="modal-content" *ngIf="paymentStatus === 'processing'">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Processing</h5>
+            </div>
+            <div class="modal-body">
+                <div class="loader"></div>          
+            </div>
+        </div>
+
     </div>
-  </div>
+</div>

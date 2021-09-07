@@ -1,9 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../config/api.service';
+import { CartService } from '../config/cart.service';
+import { PaymentService } from '../config/payment.service';
 import { HelpersService } from '../config/helpers.service';
 import { SeoService } from '../config/seo.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { TicketComponent } from '../components/ticket/ticket.component';
+import * as countries from '../config/countries.json';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-purchase-show',
@@ -24,6 +29,16 @@ export class PurchaseShowComponent implements OnInit {
   currencies: any;
   currentSymbol: any;
   floatRates: any;
+  cart: any;
+  havePromo: boolean;
+  countries: any = (countries as any).default;
+  cardElement: any;
+  clientSecret: any;
+  nameOnCard: any;
+  paymentMethod: any;
+  paymentStatus: string;
+  errorMessage: any;
+  errorCode: number;
   @ViewChild('input') input: ElementRef;
   @ViewChild('video') videoPlayer: ElementRef;
 
@@ -33,7 +48,9 @@ export class PurchaseShowComponent implements OnInit {
     private helpers: HelpersService,
     private metaService: Meta,
     private seo: SeoService,
-    private titleService: Title
+    private titleService: Title,
+    private cartService: CartService,
+    private paymentService: PaymentService
   ) { }
 
   ngOnInit(): void {
@@ -42,27 +59,143 @@ export class PurchaseShowComponent implements OnInit {
     this.getFloatRates();
     this.getEvent();
     this.end = 2;
+    this.helpers.toTop()
+    this.cart = JSON.parse(sessionStorage.getItem('cart'))
+    this.initPaymentModal()
+    this.paymentStatus = 'open'
+  }
+
+  initPaymentModal() {
+    const modal = document.getElementById('purchaseModal')
+    modal.addEventListener('shown.bs.modal', () => {
+      this.createStripeElement()
+    })
+    modal.addEventListener('hidden.bs.modal', () => {
+      this.paymentStatus = 'open'
+    })
+  }
+
+  async createStripeElement() {
+    this.cardElement = await this.paymentService.card;
+    this.cardElement.mount('#card-element');
+    this.createPaymentRequestButton();
+  }
+
+  async createPaymentRequestButton() {
+    this.getClientSecret()
+    let elements = await this.paymentService.elements;
+    let paymentRequest = this.paymentService.stripe.paymentRequest({
+      country: 'US',
+      currency: 'usd',
+      total: {
+        label: 'Cart total',
+        amount: this.cart && this.cart.totalDue ? (this.cart.totalDue * 100) : 0
+      },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    })
+    let prButton = await elements.create('paymentRequestButton', {
+      paymentRequest: paymentRequest,
+    });
+    // Check the availability of the Payment Request API first
+    paymentRequest.canMakePayment().then(function (result) {
+      if (result) {
+        prButton.mount('#payment-request-button');
+      } else {
+        document.getElementById('payment-request-button').style.display = 'none';
+      }
+    });
+
+    paymentRequest.on('paymentmethod', (ev) => {
+      this.paymentService.stripe(
+        this.clientSecret,
+        { payment_method: ev.paymentMethod.id },
+        { handleActions: false }
+      ).then(function (confirmResult) {
+        if (confirmResult.error) {
+          // Report to the browser that the payment failed
+          // re-show the payment interface, or show an error message and close
+          // the payment interface.
+          ev.complete('fail');
+        } else {
+          // Report to the browser that the confirmation was successful, prompting
+          // it to close the browser payment method collection interface.
+          ev.complete('success');
+          // Check if the PaymentIntent requires any actions and if so let Stripe.js
+          // handle the flow. If using an API version older than "2019-02-11"
+          // instead check for: `paymentIntent.status === "requires_source_action"`.
+          if (confirmResult.paymentIntent.status === "requires_action") {
+            // Let Stripe.js handle the rest of the payment flow.
+            this.paymentService.stripe.confirmCardPayment(this.clientSecret).then(result => {
+              if (result.error) {
+                // The payment failed -- ask your customer for a new payment method.
+                this.paymentStatus = 'error';
+                this.errorMessage = 'Payment failed';
+              } else {
+                // The payment has succeeded.
+                this.paymentStatus = 'success';
+              }
+            });
+          } else {
+            // The payment has succeeded.
+            this.paymentStatus = 'success';
+          }
+        }
+      }).bind(this)
+    });
+  }
+
+  pay() {
+    const length = this.nameOnCard ? this.nameOnCard.split('').length : 0
+    if (length && length > 4) {
+      this.paymentService.stripe.createPaymentMethod({
+        type: 'card',
+        card: this.cardElement
+      }).then(result => {
+        if (result) {
+          let data = {}
+          let paymentId = result.paymentMethod.id
+          data['event'] = this.event.id;
+          data['ticket'] = this.myTicket;
+          data['meetAndGreet'] = this.cart && this.cart.event ? true : false;
+          data['paymentMethodId'] = paymentId;
+          this.paymentStatus = 'processing';
+          this.api.pay(data).subscribe(res => {
+            if (res['status'] === 'success') this.paymentStatus = 'success'
+          },
+            error => {
+              this.paymentStatus = 'error';
+              this.errorMessage = error.error.text;
+              this.errorCode = error.status;
+            })
+        }
+      })
+    } else {
+      console.log('Invalid Input')
+    }
+  }
+
+  getClientSecret() {
+    let data = {}
+    data['event'] = this.event.id;
+    data['ticket'] = this.myTicket;
+    data['meetAndGreet'] = this.cart && this.cart.event ? true : false;
+    this.api.getClientSecret(data).subscribe(res => this.clientSecret = res['client_secret'])
   }
 
   setBG() {
     document.body.style.backgroundImage = `linear-gradient(to bottom, rgba(26, 32, 48, 0.52), rgba(26, 32, 48, 1)), url(${this.event.background_image.formats.large.url})`;
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.backgroundSize = '100% 100%';
+    document.body.style.backgroundSize = 'cover';
+  }
+
+  setTotals(cart) {
+    this.cart = cart
+    this.getClientSecret()
   }
 
   setMetaData() {
-    /*
-    if (this.seo) {
-      this.seo.updateMetadata({
-        title: `Watch ${this.event.performers[0].name} Live`,
-        description: `Checkout my livestream performance via Studio On Sunset of ${
-          this.event.name
-        } on ${this.helpers.setEventStartDate(this.event.start)}`,
-        image: `${this.event.performers[0].profile_picture.formats.small.url}`
-      });
-    }
-    */
     this.titleService.setTitle(`Watch ${this.event.performers[0].name} Live`);
     this.metaService.addTags([
       { name: 'description', content: `Checkout my livestream performance via Studio On Sunset of ${this.event.name} on ${this.helpers.setEventStartDate(this.event.start)}` },
@@ -90,11 +223,11 @@ export class PurchaseShowComponent implements OnInit {
         // this.setTotals();
         // this.setMetaData();
         if (this.helpers.isBrowser()) {
-          this.helpers.setBG(this.event.background_image.formats.large.url, 'full');
+          // this.helpers.setBG(this.event.background_image.formats.large.url, 'full');
           this.windowLocation = location.href;
           this.modalListener();
         }
-        this.setMetaData();
+        //this.setMetaData();
       }
     });
   }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: `https://studioonsunset.com/api/`
+  api: `http://studioonsunset.com/api`,
+  stripeKey: 'pk_test_51IYVJDEjx5eLnToDFWTo5C6HA2oAwuvD5TzafDYjeCuNkO4yK3OhI1w2hWfqqCIkWjL2dieNWkeTTuViIgVk4qf400Xek4oyw8'
 };
 
 /*

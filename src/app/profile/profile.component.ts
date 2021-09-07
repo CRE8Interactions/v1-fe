@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
 		const windowSize = event.target.innerWidth;
 		this.getWindowSize(windowSize);
 	}
-	constructor(@Inject(DOCUMENT) private document: Document, private helpers: HelpersService) {}
+	constructor(@Inject(DOCUMENT) private document: Document, private helpers: HelpersService) { }
 	getType(data) {
 		this.type = data.type;
 
@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
 			window.scrollTo(0, 0);
 		}
 	}
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	// event is fired when new component is instantiated
 	onActivate(event) {
