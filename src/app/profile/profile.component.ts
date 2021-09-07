@@ -42,9 +42,12 @@ export class ProfileComponent implements OnInit {
 		const path = location.pathname.split('/')[3];
 		// display header when window is > 992px
 		if (path === 'my-profile') {
+			console.log('my profile');
+
 			heading.style.display = 'block';
 		}
 		else if (windowSize < 992) {
+			console.log('< 992');
 			if (
 				path === 'personal-details' ||
 				path === 'login-security' ||
@@ -56,6 +59,8 @@ export class ProfileComponent implements OnInit {
 			}
 		}
 		else {
+			console.log('> 992');
+
 			heading.style.display = 'block';
 		}
 	}
